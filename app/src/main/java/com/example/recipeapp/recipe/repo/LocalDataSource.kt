@@ -1,4 +1,4 @@
-package com.example.recipeapp.recipe
+package com.example.recipeapp.recipe.repo
 
 import com.example.recipeapp.recipe.model.Meal
 

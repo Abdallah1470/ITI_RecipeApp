@@ -1,7 +1,6 @@
-package com.example.recipeapp.recipe
+package com.example.recipeapp.recipe.repo
 
 import com.example.recipeapp.recipe.model.Meal
-import com.example.recipeapp.recipe.model.MealBrief
 
 interface RemoteDataSource {
     suspend fun getDataFromRemote(): List<Meal>

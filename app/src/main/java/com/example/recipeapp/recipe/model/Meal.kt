@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName
 /**
  * Data class representing a Meal entity in the database.
  *
- * @property dateModified The date when the meal was last modified.
  * @property idMeal The unique identifier for the meal.
  * @property strArea The area or region where the meal is from.
  * @property strCategory The category of the meal.
@@ -65,8 +64,7 @@ import com.google.gson.annotations.SerializedName
  */
 @Entity(tableName = "meals")
 data class Meal(
-    @SerializedName("dateModified") @ColumnInfo(name = "date_modified") val dateModified: Any?,
-    @SerializedName("idMeal") @PrimaryKey(autoGenerate = false) val idMeal: String?,
+    @SerializedName("idMeal") @PrimaryKey(autoGenerate = false) val idMeal: String,
     @SerializedName("strArea") @ColumnInfo(name = "area") val strArea: String?,
     @SerializedName("strCategory") @ColumnInfo(name = "category") val strCategory: String?,
     @SerializedName("strCreativeCommonsConfirmed") @ColumnInfo(name = "creative_commons_confirmed") val strCreativeCommonsConfirmed: String?,

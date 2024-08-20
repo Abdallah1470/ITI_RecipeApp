@@ -1,4 +1,4 @@
-package com.example.recipeapp.recipe
+package com.example.recipeapp.recipe.network
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -13,17 +13,17 @@ object MealsRequest {
     /**
      * Gson instance configured to serialize null values.
      */
-    val gson: Gson = GsonBuilder().serializeNulls().create()
+    private val gson: Gson = GsonBuilder().serializeNulls().create()
 
     /**
      * GsonConverterFactory instance for converting JSON responses using Gson.
      */
-    val gsonConverter: GsonConverterFactory = GsonConverterFactory.create(gson)
+    private val gsonConverter: GsonConverterFactory = GsonConverterFactory.create(gson)
 
     /**
      * Retrofit instance configured with the base URL and OkHttpClient.
      */
-    val retrofit = Retrofit.Builder().baseUrl("https://www.themealdb.com/api/json/v1/1/")
+    private val retrofit = Retrofit.Builder().baseUrl("https://www.themealdb.com/api/json/v1/1/")
         .client(OkHttpClient()).addConverterFactory(
             gsonConverter
         ).build()

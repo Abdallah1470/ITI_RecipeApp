@@ -1,10 +1,12 @@
-package com.example.recipeapp.recipe
+package com.example.recipeapp.recipe.network
 
+import com.example.recipeapp.recipe.model.AreaMeals
 import com.example.recipeapp.recipe.model.AreasListResponse
 import com.example.recipeapp.recipe.model.CategoriesListResponse
 import com.example.recipeapp.recipe.model.CategoriesResponse
+import com.example.recipeapp.recipe.model.CategoryMeals
 import com.example.recipeapp.recipe.model.IngredientsListResponse
-import com.example.recipeapp.recipe.model.MealsMainIngredient
+import com.example.recipeapp.recipe.model.MainIngredientMeals
 import com.example.recipeapp.recipe.model.MealsResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -76,9 +78,26 @@ interface MealsService {
     /**
      * Fetches meals by a specific ingredient.
      * @param ingredient The ingredient to search for.
-     * @return A [MealsMainIngredient] containing the search results.
+     * @return A [MainIngredientMeals] containing the search results.
      */
     @GET("filter.php")
-    suspend fun getMealsByIngredient(@Query("i") ingredient: String): MealsMainIngredient
+    suspend fun getMealsByIngredient(@Query("i") ingredient: String): MainIngredientMeals
 
+    /**
+     * Fetches meals by a specific category.
+     *
+     * @param category The category to search for.
+     * @return A [CategoryMeals] containing the search results.
+     */
+    @GET("filter.php")
+    suspend fun getMealsByCategory(@Query("c") category: String): CategoryMeals
+
+    /**
+     * Fetches meals by a specific area.
+     *
+     * @param area The area to search for.
+     * @return An [AreaMeals] containing the search results.
+     */
+    @GET("filter.php")
+    suspend fun getMealsByArea(@Query("a") area: String): AreaMeals
 }

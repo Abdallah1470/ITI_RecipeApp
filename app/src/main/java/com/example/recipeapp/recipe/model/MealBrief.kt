@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName
  */
 data class MealBrief(
     @SerializedName("idMeal")
-    val idMeal: String?,
+    val idMeal: String,
     @SerializedName("strMeal")
     val strMeal: String?,
     @SerializedName("strMealThumb")

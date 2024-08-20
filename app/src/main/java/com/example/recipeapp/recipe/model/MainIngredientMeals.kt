@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
  *
  * @property meals The list of brief descriptions of meals containing the main ingredient.
  */
-data class MealsMainIngredient(
+data class MainIngredientMeals(
     @SerializedName("meals")
     val meals: List<MealBrief>?
 )

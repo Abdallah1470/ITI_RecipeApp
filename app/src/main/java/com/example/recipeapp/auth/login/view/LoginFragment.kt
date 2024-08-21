@@ -47,7 +47,7 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
         email = view.findViewById(R.id.input_field_email)
-        password = view.findViewById(R.id.input_password)
+        password = view.findViewById<EditText?>(R.id.input_password)
         loginButton = view.findViewById(R.id.button_login)
         registeTextView = view.findViewById(R.id.go_to_sign_up)
         visabilityPassword = view.findViewById(R.id.password_create_visibility_toggle)

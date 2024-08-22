@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,43 +9,38 @@
     android:background="#E1DDDD"
     android:layout_margin="8dp"
     android:elevation="16dp"
-    android:layout_marginTop="150dp"
     app:cardCornerRadius="16dp"
     android:outlineSpotShadowColor="@color/black"
     android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="4dp">
 
 
         <ImageView
             android:id="@+id/mealImage"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_margin="16dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="4dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="-5dp"
             android:background="@drawable/circle_meal"
             android:clipToOutline="true"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.232"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
-            android:id="@+id/mealName"
+            android:id="@+id/categoryName"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="15dp"
-            android:padding="10dp"
             android:gravity="center_horizontal"
-            android:text="Baked salmon with fennel  tomatoes"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/mealImage"
             app:layout_constraintHorizontal_bias="0.489"
@@ -52,18 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/mealImage" />
 
 
-        <ImageView
-            android:id="@+id/mealFavorite"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="4dp"
-            android:layout_margin="4dp"
-            android:background="@drawable/circle_meal"
-            app:layout_constraintEnd_toEndOf="@+id/mealImage"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/mealImage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_vavorit_foreground" />
+        />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

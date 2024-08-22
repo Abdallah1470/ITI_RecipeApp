@@ -1,4 +1,4 @@
-package com.example.homerecipe.home.view
+package com.example.recipeapp.recipe.home.view
 
 import android.content.Context
 import android.os.Bundle
@@ -10,10 +10,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recipeapp.recipe.home.HomeRecycleView
+import com.example.homerecipe.home.model.repo.CategoryRemoteImpl
 import com.example.homerecipe.home.model.repo.CategoryViewModelFactory
-import com.example.homerecipe.home.model.repo.CategoryRemoteDatabaseImpl
-import com.example.homerecipe.home.model.repo.CategoryRepositoryImpl
+import com.example.recipeapp.recipe.home.model.repo.CategoryRepositoryImpl
 import com.example.homerecipe.home.viewModel.CategoryViewModel
 import com.example.recipeapp.R
 import com.example.recipeapp.recipe.network.MealsRequest
@@ -23,7 +22,7 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
 
     private val viewModel: CategoryViewModel by viewModels(){
-        val remote = CategoryRemoteDatabaseImpl(MealsRequest.service)
+        val remote = CategoryRemoteImpl(MealsRequest.service)
         CategoryViewModelFactory(CategoryRepositoryImpl(remote))
     }
 
@@ -41,7 +40,8 @@ class HomeFragment : Fragment() {
         viewModel.fetchProducts()
         viewModel.data.observe(viewLifecycleOwner) { data ->
             recyclerView.adapter = HomeRecycleView(data, navController)
-            recyclerView.layoutManager = GridLayoutManager(requireContext(),getColumSpan(requireContext()))
+            recyclerView.layoutManager =
+                GridLayoutManager(requireContext(), getColumSpan(requireContext()))
 
         }
         return view
@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
 
 
     // to get number of item to put in each row
-    fun getColumSpan(context: Context):Int{
+    fun getColumSpan(context: Context): Int {
         val displayMetrics = context.resources.displayMetrics
         val dpWidth = displayMetrics.widthPixels / displayMetrics.density
         return dpWidth.div(180).toInt()

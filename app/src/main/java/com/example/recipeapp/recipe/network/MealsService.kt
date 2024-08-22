@@ -1,6 +1,7 @@
 package com.example.recipeapp.recipe.network
 
-import com.example.homerecipe.home.model.CategoryListRsponse
+import com.example.homerecipe.meals.model.ResponseMeal
+import com.example.recipeapp.recipe.home.model.CategoryListRsponse
 import com.example.recipeapp.recipe.model.AreaMeals
 import com.example.recipeapp.recipe.model.AreasListResponse
 import com.example.recipeapp.recipe.model.CategoryMeals
@@ -89,7 +90,7 @@ interface MealsService {
      * @return A [CategoryMeals] containing the search results.
      */
     @GET("filter.php")
-    suspend fun getMealsByCategory(@Query("c") category: String): CategoryMeals
+    suspend fun getMealsByCategory(@Query("c") category: String): ResponseMeal
 
     /**
      * Fetches meals by a specific area.

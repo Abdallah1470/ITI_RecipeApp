@@ -1,4 +1,4 @@
-package com.example.recipeapp.recipe.home
+package com.example.recipeapp.recipe.home.view
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,13 +10,12 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.homerecipe.home.model.Category
-import com.example.homerecipe.home.view.HomeFragmentDirections
 import com.example.recipeapp.R
 
 class HomeRecycleView(private val meels: List<Category>, private val navController: NavController):RecyclerView.Adapter<HomeRecycleView.MyHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_row, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.category_row, parent, false)
         return MyHolder(view)
     }
 
@@ -34,8 +33,9 @@ class HomeRecycleView(private val meels: List<Category>, private val navControll
         }
 
         holder.itemView.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToDetalisFragment()
-            Log.d("main",meels[position].strCategory.toString())
+            val categoryItemName = meels[position].strCategory.toString()
+            val action = HomeFragmentDirections.actionHomeFragmentToDetalisFragment(categoryItemName)
+            Log.d("main",categoryItemName)
             navController.navigate(action)
         }
     }

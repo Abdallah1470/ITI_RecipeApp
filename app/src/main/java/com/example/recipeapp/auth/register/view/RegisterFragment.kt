@@ -35,12 +35,12 @@ class RegisterFragment : Fragment() {
     private lateinit var passwordConfirm: EditText
     private lateinit var registerButton: Button
     private lateinit var loginTextView: TextView
-    private lateinit var visabilityPassword:ImageView
-    private lateinit var visabilityConfirmPassword:ImageView
+    private lateinit var visibilityPassword:ImageView
+    private lateinit var visibilityConfirmPassword:ImageView
 
 
     private val regViewModel: RegisterViewModel by viewModels {
-        val userDao =UserDatabase.getInstance(requireContext().applicationContext).userDao()
+        val userDao = UserDatabase.getInstance(requireContext().applicationContext).userDao()
         RegisterViewModelFactory(UserRepository(userDao = userDao))
     }
 
@@ -49,8 +49,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_register, container, false)
-
+        val view = inflater.inflate(R.layout.fragment_register, container, false)
 
         // get references
         email = view.findViewById(R.id.input_user_email)
@@ -59,8 +58,8 @@ class RegisterFragment : Fragment() {
         passwordConfirm = view.findViewById(R.id.confirm_password_signup)
         registerButton = view.findViewById(R.id.button_register)
         loginTextView = view.findViewById(R.id.go_to_sign_up)
-        visabilityPassword = view.findViewById(R.id.password_create_visibility_toggle)
-        visabilityConfirmPassword = view.findViewById(R.id.repet_password_create_visibility_toggle)
+        visibilityPassword = view.findViewById(R.id.password_create_visibility_toggle)
+        visibilityConfirmPassword = view.findViewById(R.id.repet_password_create_visibility_toggle)
 
         return view
     }
@@ -73,8 +72,13 @@ class RegisterFragment : Fragment() {
             val strEmail = email.text.toString()
             val strPassword = password.text.toString()
             val strConfirmPassword = passwordConfirm.text.toString()
-            val user = User(name = strName, email = strEmail, password = strPassword, favoriteMeals = listOf())
-            regViewModel.register(user,strConfirmPassword)
+            val user = User(
+                name = strName,
+                email = strEmail,
+                password = strPassword,
+            )
+
+            regViewModel.register(user, strConfirmPassword)
         }
 
 
@@ -110,12 +114,12 @@ class RegisterFragment : Fragment() {
         }
 
 
-        visabilityPassword.setOnClickListener {
-            toggleVisibility(password,visabilityPassword)
+        visibilityPassword.setOnClickListener {
+            toggleVisibility(password,visibilityPassword)
         }
 
-        visabilityConfirmPassword.setOnClickListener {
-            toggleVisibility(passwordConfirm,visabilityConfirmPassword)
+        visibilityConfirmPassword.setOnClickListener {
+            toggleVisibility(passwordConfirm,visibilityConfirmPassword)
         }
 
     }
@@ -132,15 +136,15 @@ class RegisterFragment : Fragment() {
     }
 
     // function to toggle visibility of password
-    fun toggleVisibility(password: EditText , visabilityPassword:ImageView) {
+    fun toggleVisibility(password: EditText, visibilityPassword: ImageView) {
         if (password.transformationMethod is PasswordTransformationMethod) {
             // Show password
             password.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            visabilityPassword.setImageResource(R.drawable.show_password)
+            visibilityPassword.setImageResource(R.drawable.show_password)
         } else {
             // Hide password
             password.transformationMethod = PasswordTransformationMethod.getInstance()
-            visabilityPassword.setImageResource(R.drawable.unshow_pass)
+            visibilityPassword.setImageResource(R.drawable.unshow_pass)
         }
         // Move the cursor to the end of the text
         password.setSelection(password.text.length)

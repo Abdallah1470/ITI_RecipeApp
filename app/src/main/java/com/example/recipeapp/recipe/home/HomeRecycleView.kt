@@ -1,4 +1,4 @@
-package com.example.homerecipe.home
+package com.example.recipeapp.recipe.home
 
 import android.util.Log
 import android.view.LayoutInflater

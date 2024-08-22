@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.homerecipe.home.HomeRecycleView
+import com.example.recipeapp.recipe.home.HomeRecycleView
 import com.example.homerecipe.home.model.repo.CategoryViewModelFactory
 import com.example.homerecipe.home.model.repo.CategoryRemoteDatabaseImpl
 import com.example.homerecipe.home.model.repo.CategoryRepositoryImpl

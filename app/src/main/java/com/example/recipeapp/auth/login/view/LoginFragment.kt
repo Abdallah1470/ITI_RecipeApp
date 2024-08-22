@@ -18,14 +18,10 @@ import com.example.recipeapp.auth.login.LoginViewModelFactory
 import com.example.recipeapp.auth.login.viewmodel.LoginNavigation
 import com.example.recipeapp.auth.login.viewmodel.LoginResult
 import com.example.recipeapp.auth.login.viewmodel.LoginViewModel
-import com.example.recipeapp.auth.register.model.RegisterViewModelFactory
 import com.example.recipeapp.auth.register.model.UserDatabase
 import com.example.recipeapp.auth.register.model.UserRepository
 import com.example.recipeapp.auth.register.view.RegisterFragment
-import com.example.recipeapp.auth.register.viewmodel.ErrorType
-import com.example.recipeapp.auth.register.viewmodel.RegisterNavigation
-import com.example.recipeapp.auth.register.viewmodel.RegisterResult
-import com.example.recipeapp.recipe.view.RecipeActivity
+import com.example.recipeapp.recipe.home.RecipeActivity
 
 class LoginFragment : Fragment() {
 
@@ -72,7 +68,9 @@ class LoginFragment : Fragment() {
         loginViewModel.loginResultLiveData.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is LoginResult.LoginSuccessful -> Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
+
                 is LoginResult.LoginError -> Toast.makeText(context, "Registration failed", Toast.LENGTH_SHORT).show()
+
                 is LoginResult.InvalidData -> handleInvalidData(result.error)
             }
         }

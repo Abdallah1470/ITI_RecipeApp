@@ -25,7 +25,7 @@ class RecipesRepoImpl(
     private suspend fun getAndSaveRemoteData(): List<Meal> {
         val remote = remoteDataSource.getDataFromRemote()
 
-        if (remote.isNotEmpty()) {
+        if (remote.isEmpty()) {
             saveRecipesLocally(remote)
         }
 
@@ -35,6 +35,7 @@ class RecipesRepoImpl(
     override suspend fun saveRecipesLocally(meals: List<Meal>) {
         localDataSource.setMeals(meals)
     }
+
 
     private fun isDataUpToDate(context: Context): Boolean {
         // Get the current time

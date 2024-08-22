@@ -1,5 +1,6 @@
 package com.example.recipeapp.recipe.repo
 
+import com.example.homerecipe.home.model.CategoryListRsponse
 import com.example.recipeapp.recipe.network.MealsService
 import com.example.recipeapp.recipe.model.Meal
 
@@ -19,10 +20,6 @@ class RemoteDataSourceImpl(private val service: MealsService) : RemoteDataSource
      * @return A list of Meal objects fetched from the remote source.
      */
     override suspend fun getDataFromRemote(): List<Meal> {
-        return service.getCategoryList().meals.flatMap { category ->
-            service.getMealsByCategory(category.strCategory).meals.flatMap { mealBrief ->
-                service.getMealById(mealBrief.idMeal).meals
-            }
-        }
+        return service.getCategoryList().meals
     }
 }

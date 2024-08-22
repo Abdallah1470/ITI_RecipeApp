@@ -14,9 +14,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.recipeapp.R
+import com.example.recipeapp.recipe.home.RecipeActivity
 import com.example.recipeapp.auth.register.model.RegisterViewModelFactory
 import com.example.recipeapp.auth.register.model.User
 import com.example.recipeapp.auth.register.model.UserDatabase
@@ -25,7 +25,6 @@ import com.example.recipeapp.auth.register.viewmodel.ErrorType
 import com.example.recipeapp.auth.register.viewmodel.RegisterNavigation
 import com.example.recipeapp.auth.register.viewmodel.RegisterResult
 import com.example.recipeapp.auth.register.viewmodel.RegisterViewModel
-import com.example.recipeapp.recipe.view.RecipeActivity
 
 
 class RegisterFragment : Fragment() {
@@ -81,15 +80,31 @@ class RegisterFragment : Fragment() {
 
         regViewModel.registrationResultLiveData.observe(viewLifecycleOwner) { result ->
             when (result) {
-                is RegisterResult.RegisterSuccessful -> Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
-                is RegisterResult.RegisterError -> Toast.makeText(context, "Registration failed", Toast.LENGTH_SHORT).show()
+                is RegisterResult.RegisterSuccessful -> Toast.makeText(
+                    context,
+                    "Registration successful",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                is RegisterResult.RegisterError -> Toast.makeText(
+                    context,
+                    "Registration failed",
+                    Toast.LENGTH_SHORT
+                ).show()
+
                 is RegisterResult.InvalidData -> handleInvalidData(result.error)
             }
         }
 
         regViewModel.registerNavigationLiveData.observe(viewLifecycleOwner) { navigation ->
             when (navigation) {
-                RegisterNavigation.NavigateToHome -> startActivity(Intent(context,RecipeActivity::class.java))
+                RegisterNavigation.NavigateToHome -> startActivity(
+                    Intent(
+                        context,
+                        RecipeActivity::class.java
+                    )
+                )
+
                 RegisterNavigation.NavigateToLogin -> findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
         }

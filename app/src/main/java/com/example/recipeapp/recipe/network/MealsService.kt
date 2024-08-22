@@ -1,9 +1,8 @@
 package com.example.recipeapp.recipe.network
 
+import com.example.homerecipe.home.model.CategoryListRsponse
 import com.example.recipeapp.recipe.model.AreaMeals
 import com.example.recipeapp.recipe.model.AreasListResponse
-import com.example.recipeapp.recipe.model.CategoriesListResponse
-import com.example.recipeapp.recipe.model.CategoriesResponse
 import com.example.recipeapp.recipe.model.CategoryMeals
 import com.example.recipeapp.recipe.model.IngredientsListResponse
 import com.example.recipeapp.recipe.model.MainIngredientMeals
@@ -52,14 +51,14 @@ interface MealsService {
      * @return A [CategoriesResponse] containing the search results.
      */
     @GET("categories.php")
-    suspend fun getAllMealCategories(): CategoriesResponse
+    suspend fun getAllCategories(): com.example.homerecipe.home.model.CategoriesResponse
 
     /**
      * Fetches a list of meal categories.
      * @return A [CategoriesListResponse] containing the list of meal categories.
      */
     @GET("list.php?c=list")
-    suspend fun getCategoryList(): CategoriesListResponse
+    suspend fun getCategoryList(): CategoryListRsponse
 
     /**
      * Fetches a list of meal areas.

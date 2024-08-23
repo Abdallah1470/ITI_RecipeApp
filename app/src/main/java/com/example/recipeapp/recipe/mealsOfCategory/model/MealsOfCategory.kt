@@ -8,6 +8,6 @@ data class MealsOfCategory(
     @SerializedName("strMealThumb" )
     var strMealThumb : String? = null,
     @SerializedName("idMeal")
-    var idMeal: String? = null
+    var idMeal: String
 
 )

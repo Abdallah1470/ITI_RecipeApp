@@ -38,7 +38,7 @@ interface MealsService {
      * @return A [MealsResponse] containing the search results.
      */
     @GET("lookup.php")
-    suspend fun getMealById(@Query("i") mealId: String): MealsResponse
+    suspend fun getMealById(@Query("i") mealId: String?): MealsResponse
 
     /**
      * Fetches a random meal.

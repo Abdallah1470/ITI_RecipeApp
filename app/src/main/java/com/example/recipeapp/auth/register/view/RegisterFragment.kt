@@ -76,6 +76,7 @@ class RegisterFragment : Fragment() {
                 name = strName,
                 email = strEmail,
                 password = strPassword,
+                favorites = emptyList()
             )
 
             regViewModel.register(user, strConfirmPassword)

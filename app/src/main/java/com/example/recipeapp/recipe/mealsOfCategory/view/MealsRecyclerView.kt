@@ -3,6 +3,7 @@ package com.example.homerecipe.meals.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -10,8 +11,13 @@ import com.bumptech.glide.Glide
 import com.example.recipeapp.R
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
 
-class MealsRecyclerView(private val meals: List<MealsOfCategory>?) :
-    RecyclerView.Adapter<MealsRecyclerView.MyHolder>() {
+class MealsRecyclerView(
+    private val onItemClickListener: OnItemClickListener, private val meals: List<MealsOfCategory>?
+) : RecyclerView.Adapter<MealsRecyclerView.MyHolder>() {
+
+    interface OnItemClickListener {
+        fun onItemClick(meal: MealsOfCategory)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_row, parent, false)
@@ -30,6 +36,10 @@ class MealsRecyclerView(private val meals: List<MealsOfCategory>?) :
             }
             holder.setMealName(meals[position].strMeal.toString())
 
+            holder.itemView.setOnClickListener {
+                onItemClickListener.onItemClick(meals[position])
+            }
+
             holder.addToFavorite.setOnClickListener {
                 holder.addToFavorite()
             }
@@ -38,20 +48,18 @@ class MealsRecyclerView(private val meals: List<MealsOfCategory>?) :
     }
 
 
-    class MyHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val _mealImageView: ImageView = itemView.findViewById(R.id.mealImage)
         private val _mealName: TextView = itemView.findViewById(R.id.mealName)
         val addToFavorite: ImageView = itemView.findViewById(R.id.mealFavorite)
 
 
-        fun showImage(imageUrl:String) {
-            Glide.with(itemView.context)
-                .load(imageUrl)
-                .placeholder(R.drawable.ic_launcher_foreground)
-                .into(_mealImageView)
+        fun showImage(imageUrl: String) {
+            Glide.with(itemView.context).load(imageUrl)
+                .placeholder(R.drawable.ic_launcher_foreground).into(_mealImageView)
         }
 
-        fun setMealName(mealName:String){
+        fun setMealName(mealName: String) {
             this._mealName.text = mealName
         }
 

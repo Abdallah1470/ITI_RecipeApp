@@ -12,12 +12,11 @@ class UserRepository(private val userDao: UserDao) {
         }
     }
 
-    suspend fun login(email: String, password: String): Boolean {
-        return userDao.login(email,password)
+    suspend fun login(email: String, password: String): Long {
+        return userDao.login(email, password)
     }
 
     suspend fun getUserById(id: Long): User? {
         return userDao.getUserById(id)
-
     }
 }

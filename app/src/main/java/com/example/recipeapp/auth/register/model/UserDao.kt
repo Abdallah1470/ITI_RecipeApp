@@ -17,8 +17,8 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE id = :id")
     suspend fun getUserById(id: Long): User?
 
-    @Query("SELECT EXISTS(SELECT * FROM user WHERE email = :email AND password = :password)")
-    suspend fun login(email: String, password: String): Boolean
+    @Query("SELECT COALESCE((SELECT id FROM user WHERE email = :email AND password = :password), -1)")
+    suspend fun login(email: String, password: String): Long
 
     @Update
     suspend fun updateUser(user: User)

@@ -43,7 +43,7 @@ class LoginFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
         email = view.findViewById(R.id.input_field_email)
-        password = view.findViewById<EditText?>(R.id.input_password)
+        password = view.findViewById(R.id.input_password)
         loginButton = view.findViewById(R.id.button_login)
         registeTextView = view.findViewById(R.id.go_to_sign_up)
         visabilityPassword = view.findViewById(R.id.password_create_visibility_toggle)
@@ -61,15 +61,23 @@ class LoginFragment : Fragment() {
         loginButton.setOnClickListener {
             val strEmail = email.text.toString()
             val strPassword = password.text.toString()
-            loginViewModel.login(strEmail,strPassword)
+            loginViewModel.login(requireContext().applicationContext, strEmail, strPassword)
         }
 
 
-        loginViewModel.loginResultLiveData.observe(viewLifecycleOwner) { result ->
+        loginViewModel.loginLiveData.observe(viewLifecycleOwner) { result ->
             when (result) {
-                is LoginResult.LoginSuccessful -> Toast.makeText(context, "Registration successful", Toast.LENGTH_SHORT).show()
+                is LoginResult.LoginSuccessful -> Toast.makeText(
+                    context,
+                    "Registration successful",
+                    Toast.LENGTH_SHORT
+                ).show()
 
-                is LoginResult.LoginError -> Toast.makeText(context, "Registration failed", Toast.LENGTH_SHORT).show()
+                is LoginResult.LoginError -> Toast.makeText(
+                    context,
+                    "Registration failed",
+                    Toast.LENGTH_SHORT
+                ).show()
 
                 is LoginResult.InvalidData -> handleInvalidData(result.error)
             }
@@ -93,9 +101,14 @@ class LoginFragment : Fragment() {
     // check input data before Register
     private fun handleInvalidData(error: com.example.recipeapp.auth.login.viewmodel.ErrorType) {
         when (error) {
-            com.example.recipeapp.auth.login.viewmodel.ErrorType.EmptyEmail -> email.error = "Email cannot be empty"
-            com.example.recipeapp.auth.login.viewmodel.ErrorType.EmptyPassword -> password.error = "Password cannot be empty"
-            com.example.recipeapp.auth.login.viewmodel.ErrorType.InvalidEmailFormat -> email.error = "Invalid email format"
+            com.example.recipeapp.auth.login.viewmodel.ErrorType.EmptyEmail -> email.error =
+                "Email cannot be empty"
+
+            com.example.recipeapp.auth.login.viewmodel.ErrorType.EmptyPassword -> password.error =
+                "Password cannot be empty"
+
+            com.example.recipeapp.auth.login.viewmodel.ErrorType.InvalidEmailFormat -> email.error =
+                "Invalid email format"
         }
     }
 

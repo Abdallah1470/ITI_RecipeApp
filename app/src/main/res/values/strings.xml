@@ -7,4 +7,6 @@
     <string name="log_in">Log in</string>
     <string name="sign_up">Sign up</string>
     <string name="category">Category</string>
+    <string name="show_more">show more</string>
+    <string name="show_less">show less</string>
 </resources>

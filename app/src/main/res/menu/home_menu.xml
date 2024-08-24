@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_intent"
-        android:title="Start Intent" />
+        android:id="@+id/about"
+        android:title="About the Creator" />
     <item
-        android:id="@+id/action_setting"
-        android:title="Settings" />
+        android:id="@+id/sigOut"
+        android:title="Sign Out" />
 </menu>

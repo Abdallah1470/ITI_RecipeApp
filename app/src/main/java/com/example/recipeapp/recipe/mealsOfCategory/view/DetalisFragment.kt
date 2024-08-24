@@ -10,14 +10,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.homerecipe.meals.MealViewModelFactory
-import com.example.homerecipe.meals.view.MealsRecyclerView
-import com.example.homerecipe.meals.viewModel.MealsViewModel
+import com.example.recipeapp.recipe.mealsOfCategory.viewModel.MealsViewModel
 import com.example.recipeapp.R
-import com.example.recipeapp.recipe.home.view.HomeFragment
+import com.example.recipeapp.auth.login.view.USER_ID
+import com.example.recipeapp.auth.login.view.userSharedPreferences
+import com.example.recipeapp.recipe.favorite.model.FavoriteDatabase
+import com.example.recipeapp.recipe.favorite.model.FavoriteRepository
 import com.example.recipeapp.recipe.network.MealsRequest
 
 class DetalisFragment : Fragment() {
@@ -27,7 +30,7 @@ class DetalisFragment : Fragment() {
     private val viewModel: MealsViewModel by viewModels(){
         val remote = MealRemoteImpl(MealsRequest)
         Log.d("main Details  fragment",args.categoryName)
-        MealViewModelFactory(MealRepositoryImpl(remote),args.categoryName)
+        MealViewModelFactory(FavoriteRepository(FavoriteDatabase.getInstance(requireContext().applicationContext).favoriteDao()),MealRepositoryImpl(remote),args.categoryName)
     }
 
     override fun onCreateView(
@@ -40,7 +43,7 @@ class DetalisFragment : Fragment() {
 
         viewModel.fetchMeals()
         viewModel.meal.observe(viewLifecycleOwner) { meals ->
-            mealsRecyclerView.adapter = MealsRecyclerView(meals)
+            mealsRecyclerView.adapter = MealsRecyclerView(meals, viewModel,getUser(),findNavController())
             mealsRecyclerView.layoutManager = GridLayoutManager(
                 requireContext(),
                 getColumSpan(requireContext().applicationContext)
@@ -56,5 +59,10 @@ class DetalisFragment : Fragment() {
         val dpWidth = displayMetrics.widthPixels / displayMetrics.density
         return dpWidth.div(180).toInt()
     }
+
+    private fun getUser(): Int {
+        return userSharedPreferences.getLong(USER_ID,-1).toInt()
+    }
+
 
 }

@@ -25,11 +25,11 @@ import com.example.recipeapp.recipe.home.RecipeActivity
 
 class LoginFragment : Fragment() {
 
-    private lateinit var email:EditText
-    private lateinit var password:EditText
+    private lateinit var email: EditText
+    private lateinit var password: EditText
     private lateinit var loginButton: Button
-    private lateinit var registeTextView:TextView
-    private lateinit var visabilityPassword:ImageView
+    private lateinit var registeTextView: TextView
+    private lateinit var visabilityPassword: ImageView
 
     private val loginViewModel: LoginViewModel by viewModels {
         LoginViewModelFactory(UserRepository(UserDatabase.getInstance(requireContext().applicationContext).userDao()))

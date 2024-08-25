@@ -7,11 +7,13 @@
     android:layout_margin="16dp"
     app:navGraph="@navigation/nav_login_register"
     app:defaultNavHost="true"
+    android:layout_marginTop="60dp"
     android:name="androidx.navigation.fragment.NavHostFragment"
     tools:context=".recipe.favorite.FavoriteFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/favoriteRecyclerView"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

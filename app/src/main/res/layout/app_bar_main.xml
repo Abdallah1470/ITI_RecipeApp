@@ -19,10 +19,10 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="50dp"
             android:background="#57D9BA"
             android:theme="@style/Widget.AppCompat.ActionBar"
-            app:menu="@menu/home_menu"
+            app:menu="@menu/option_menu"
 
             />
 
@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
         android:elevation="15dp"
-        android:background="#E1DDDD"
+        android:background="#A60E0E"
         app:cardCornerRadius="15dp"
         android:layout_height="wrap_content">
 
@@ -46,11 +46,9 @@
             android:id="@+id/buttom_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:background="@color/white"
+            android:background="@color/slate400"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="-20dp"
-            app:menu="@menu/button_menu" />
+            app:menu="@menu/button_navigation_menu" />
     </androidx.cardview.widget.CardView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

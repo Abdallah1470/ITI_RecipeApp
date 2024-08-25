@@ -48,7 +48,7 @@ RecyclerView.Adapter<FavoriteRecyclerView.MyHolder>() {
             }
             holder.itemView.setOnClickListener {
                 val action =
-                    FavoriteFragmentDirections.actionFavoriteFragment2ToDetailsMealFragment((meals[position].idMeal).toString())
+                    FavoriteFragmentDirections.actionFavoriteFragment2ToRecipeDetailFragment((meals[position].idMeal).toString())
                 navController.navigate(action)
             }
         }

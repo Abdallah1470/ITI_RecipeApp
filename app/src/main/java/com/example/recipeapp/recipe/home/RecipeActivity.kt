@@ -2,6 +2,8 @@ package com.example.recipeapp.recipe.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
@@ -20,16 +22,17 @@ class RecipeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        //enableEdgeToEdge()
+
         setContentView(R.layout.app_bar_main)
 
         toolbar = findViewById(R.id.toolbar)
         bottomNav = findViewById(R.id.buttom_navigation)
-        bottomNav.background = null
 
         //toolbar
         setSupportActionBar(toolbar)
-        supportActionBar?.title = R.string.app_name.toString()
+        val name: String = resources.getString(R.string.app_name)
+        supportActionBar?.title = name
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         bottomNav.setOnItemSelectedListener { menuItem ->
@@ -60,11 +63,15 @@ class RecipeActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
     }
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.option_menu,menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -80,9 +87,6 @@ class RecipeActivity : AppCompatActivity() {
                 return true
             }
         }
-
-
         return super.onOptionsItemSelected(item)
     }
-
 }

@@ -52,7 +52,7 @@ class MealsRecyclerView(
             }
             holder.itemView.setOnClickListener {
                 Log.d("Meal","Meal id = ${meals.get(position).idMeal}")
-                val action = DetalisFragmentDirections.actionDetalisFragmentToDetailsMealFragment((meals[position].idMeal).toString())
+                val action = DetalisFragmentDirections.actionDetalisFragmentToRecipeDetailFragment((meals[position].idMeal).toString())
                 navController.navigate(action)
             }
         }

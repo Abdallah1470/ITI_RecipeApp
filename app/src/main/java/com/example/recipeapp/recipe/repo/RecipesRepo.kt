@@ -5,7 +5,4 @@ import com.example.recipeapp.recipe.model.Meal
 
 interface RecipesRepo {
     suspend fun getRecipes(): List<Meal>
-
-    suspend fun saveRecipesLocally(meals: List<Meal>)
-
 }

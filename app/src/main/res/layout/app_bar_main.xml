@@ -4,7 +4,29 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
+    app:navGraph="@navigation/nav_login_register"
+    android:name="androidx.navigation.fragment.NavHostFragment"
+    app:defaultNavHost="true"
     android:fitsSystemWindows="true">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Widget.AppCompat.ActionBar">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#57D9BA"
+            android:theme="@style/Widget.AppCompat.ActionBar"
+            app:menu="@menu/option_menu"
+
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <include
         layout="@layout/containt_home"
@@ -12,33 +34,21 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent" />
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomAppBar"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
         android:layout_gravity="bottom"
-        android:theme="@style/buttonAppbar"
-        app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="10dp"
-        app:fabCradleVerticalOffset="10dp">
+        android:elevation="15dp"
+        android:background="#A60E0E"
+        app:cardCornerRadius="15dp"
+        android:layout_height="wrap_content">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/buttom_navigation"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-
-            app:menu="@menu/button_menu" />
-    </com.google.android.material.bottomappbar.BottomAppBar>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/circle_meal"
-        android:theme="@style/buttonAppbar"
-        app:backgroundTint="#EC0251"
-        android:layout_marginBottom="-15dp"
-        app:layout_anchor="@id/bottomAppBar" />
-
+            android:layout_height="wrap_content"
+            android:background="@color/slate400"
+            android:layout_gravity="bottom"
+            app:menu="@menu/button_navigation_menu" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,11 +1,11 @@
-package com.example.homerecipe.home.viewModel
+package com.example.recipeapp.recipe.home.viewModel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.homerecipe.home.model.repo.CategoryRepository
+import com.example.recipeapp.recipe.home.model.repo.CategoryRepository
 import com.example.homerecipe.home.model.Category
 import kotlinx.coroutines.launch
 

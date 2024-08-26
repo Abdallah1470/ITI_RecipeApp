@@ -4,19 +4,18 @@
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
+    android:windowSoftInputMode="adjustResize"
     tools:context=".auth.register.view.RegisterFragment">
 
     <ScrollView
         android:id="@+id/mask_group"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/text_login"
@@ -150,18 +149,6 @@
                     android:focusable="true"/>
 
 
-                <TextView
-                    android:id="@+id/textinput_error"
-                    android:layout_below="@+id/password_Sign_up"
-                    android:layout_width="match_parent"
-                    android:layout_marginStart="40dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="#66FF0000"
-                    android:textStyle="bold"
-                    android:textSize="12dp"
-                    />
-
-
             </RelativeLayout>
 
 
@@ -214,18 +201,6 @@
                     android:clickable="true"
                     android:focusable="true"/>
 
-
-                <TextView
-                    android:id="@+id/textinput_error_cant_match"
-                    android:layout_below="@+id/confirm_password_signup"
-                    android:layout_width="match_parent"
-                    android:layout_marginStart="40dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="#66FF0000"
-                    android:textStyle="bold"
-                    android:textSize="12dp"
-                    />
-
             </RelativeLayout>
 
             <Button
@@ -234,23 +209,19 @@
                 android:layout_height="56dp"
                 android:layout_below="@+id/mm"
                 android:layout_marginTop="30dp"
-                android:text="Register"
+                android:text="@string/Register"
                 android:textSize="17sp"
                 android:textAllCaps="false"
                 android:layout_marginStart="25dp"
                 android:layout_marginEnd="25dp"
                 app:backgroundTint="@null"
-                android:background="@drawable/buttom"
-                />
-
-
+                android:background="@drawable/buttom" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_below="@+id/button_register"
-                >
+                android:layout_below="@+id/button_register">
 
                 <TextView
                     android:id="@+id/text_dont_hav_acc"
@@ -264,19 +235,17 @@
                     android:layout_marginBottom="20dp"
                     android:textSize="14sp"
                     android:textColor="@color/black"
-                    android:layout_below="@+id/liner_another"
                     android:gravity="center" />
 
                 <TextView
                     android:id="@+id/go_to_sign_up"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/liner_another"
                     android:layout_marginStart="5dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:gravity="left"
+                    android:gravity="start"
                     android:lineSpacingExtra="1sp"
                     android:text="Sign In "
                     android:textColor="@android:color/holo_orange_light"

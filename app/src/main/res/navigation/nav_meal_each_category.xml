@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.recipeapp.recipe.home.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detalisFragment"
+            app:destination="@id/detalisFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_favoriteFragment2"
+            app:destination="@id/favoriteFragment2" />
+        <action
+            android:id="@+id/action_homeFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalisFragment"
+        android:name="com.example.recipeapp.recipe.mealsOfCategory.view.DetalisFragment"
+        android:label="fragment_detalis"
+        tools:layout="@layout/fragment_category_detalis" >
+        <action
+            android:id="@+id/action_detalisFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detalisFragment_to_favoriteFragment2"
+            app:destination="@id/favoriteFragment2" />
+        <action
+            android:id="@+id/action_detalisFragment_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment2"
+        android:name="com.example.recipeapp.recipe.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment2_to_detalisFragment"
+            app:destination="@id/detalisFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment2_to_recipeDetailFragment"
+            app:destination="@id/recipeDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipeDetailFragment"
+        android:name="com.example.recipeapp.recipe.detail.view.RecipeDetailFragment"
+        android:label="RecipeDetailFragment" >
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_favoriteFragment2"
+            app:destination="@id/favoriteFragment2" />
+        <action
+            android:id="@+id/action_recipeDetailFragment_to_detalisFragment"
+            app:destination="@id/detalisFragment" />
+        <argument
+            android:name="recipeId"
+            app:argType="string" />
+    </fragment>
+</navigation>

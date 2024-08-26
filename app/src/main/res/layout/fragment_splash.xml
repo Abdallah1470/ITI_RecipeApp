@@ -6,6 +6,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_meal_each_category"
         tools:context=".auth.login.view.SplashFragment">
 
         <com.airbnb.lottie.LottieAnimationView

@@ -1,6 +1,5 @@
-package com.example.recipeapp.recipe.mealsOfCategory.view
+package com.example.recipeapp.recipe.favorite.viewModel
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,18 +8,18 @@ import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.recipeapp.recipe.mealsOfCategory.viewModel.MealsViewModel
 import com.example.recipeapp.R
+import com.example.recipeapp.recipe.favorite.FavoriteFragment
+import com.example.recipeapp.recipe.favorite.FavoriteFragmentDirections
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
 
-private var isChecked:Boolean = false
-class MealsRecyclerView(
-    private val meals: List<MealsOfCategory>?,
-    private val viewModel: MealsViewModel,
-    private val userId:Int,
+data class FavoriteRecyclerView(
+    private val meals: MutableList<MealsOfCategory>?,
+    private val userId: Int,
+    private val viewModel: FavoriteViewModel,
     private val navController: NavController
 ) :
-    RecyclerView.Adapter<MealsRecyclerView.MyHolder>() {
+RecyclerView.Adapter<FavoriteRecyclerView.MyHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_row, parent, false)
@@ -32,6 +31,7 @@ class MealsRecyclerView(
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
+        holder.removeFromFavorite.setImageResource(R.drawable.lover)
         if (meals?.isNotEmpty() == true) {
             val imageUrl = meals[position].strMealThumb
             if (imageUrl != null) {
@@ -39,32 +39,26 @@ class MealsRecyclerView(
             }
             holder.setMealName(meals[position].strMeal.toString())
 
-            holder.addToFavorite.setOnClickListener {
-                isChecked = !isChecked
-                if (isChecked) {
-                    holder.addToFavorite.setImageResource(R.drawable.lover)
-                    viewModel.insertToFavorite(meals[position],userId)
-                } else {
-                    holder.addToFavorite.setImageResource(R.drawable.heart)
-                    viewModel.deleteFromFavorite(meals[position],userId)
-                }
 
+            holder.removeFromFavorite.setOnClickListener {
+                holder.removeFromFavorite.setImageResource(R.drawable.heart)
+                viewModel.deleteFromFavorite(meals[position],userId)
+                meals.removeAt(position)
+                notifyItemRemoved(position)
             }
             holder.itemView.setOnClickListener {
-                Log.d("Meal","Meal id = ${meals.get(position).idMeal}")
-                val action = DetalisFragmentDirections.actionDetalisFragmentToRecipeDetailFragment((meals[position].idMeal).toString())
+                val action =
+                    FavoriteFragmentDirections.actionFavoriteFragment2ToRecipeDetailFragment((meals[position].idMeal).toString())
                 navController.navigate(action)
             }
         }
-
     }
 
 
-    class MyHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-
+    class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val _mealImageView: ImageView = itemView.findViewById(R.id.mealImage)
         private val _mealName: TextView = itemView.findViewById(R.id.mealName)
-        val addToFavorite: ImageView = itemView.findViewById(R.id.mealFavorite)
+        val removeFromFavorite: ImageView = itemView.findViewById(R.id.mealFavorite)
 
 
         fun showImage(imageUrl:String) {
@@ -74,7 +68,7 @@ class MealsRecyclerView(
                 .into(_mealImageView)
         }
 
-        fun setMealName(mealName:String){
+        fun setMealName(mealName: String) {
             this._mealName.text = mealName
         }
 

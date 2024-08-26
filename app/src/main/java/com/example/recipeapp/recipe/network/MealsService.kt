@@ -1,6 +1,7 @@
 package com.example.recipeapp.recipe.network
 
-import com.example.homerecipe.meals.model.ResponseMeal
+import com.example.recipeapp.recipe.detail.MealDetailsResponse
+import com.example.recipeapp.recipe.mealsOfCategory.model.ResponseMeal
 import com.example.recipeapp.recipe.home.model.CategoryListRsponse
 import com.example.recipeapp.recipe.model.AreaMeals
 import com.example.recipeapp.recipe.model.AreasListResponse
@@ -38,7 +39,7 @@ interface MealsService {
      * @return A [MealsResponse] containing the search results.
      */
     @GET("lookup.php")
-    suspend fun getMealById(@Query("i") mealId: String?): MealsResponse
+    suspend fun getMealById(@Query("i") mealId: String): MealDetailsResponse
 
     /**
      * Fetches a random meal.

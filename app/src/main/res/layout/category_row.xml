@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:backgroundTint="#E6E2E2"
     android:background="#E1DDDD"
     android:layout_margin="8dp"
     android:elevation="16dp"
@@ -16,14 +15,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp">
+        android:layout_margin="0dp">
 
 
         <ImageView
             android:id="@+id/mealImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="-5dp"
             android:background="@drawable/circle_meal"
             android:clipToOutline="true"
             android:scaleType="centerCrop"
@@ -38,7 +36,7 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -47,8 +45,6 @@
             app:layout_constraintStart_toStartOf="@+id/mealImage"
             app:layout_constraintTop_toBottomOf="@+id/mealImage" />
 
-
-        />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

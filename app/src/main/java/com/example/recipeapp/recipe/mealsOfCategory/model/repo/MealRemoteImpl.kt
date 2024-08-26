@@ -1,5 +1,5 @@
 
-import com.example.homerecipe.meals.model.ResponseMeal
+import com.example.recipeapp.recipe.mealsOfCategory.model.ResponseMeal
 import com.example.recipeapp.recipe.network.MealsRequest
 
 class MealRemoteImpl(private val apiService: MealsRequest ) : MealRemote {

@@ -1,6 +1,5 @@
 package com.example.recipeapp.auth.register.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -16,7 +15,6 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.recipeapp.R
-import com.example.recipeapp.recipe.home.RecipeActivity
 import com.example.recipeapp.auth.register.model.RegisterViewModelFactory
 import com.example.recipeapp.auth.register.model.User
 import com.example.recipeapp.auth.register.model.UserDatabase
@@ -103,14 +101,8 @@ class RegisterFragment : Fragment() {
 
         regViewModel.registerNavigationLiveData.observe(viewLifecycleOwner) { navigation ->
             when (navigation) {
-                RegisterNavigation.NavigateToHome -> startActivity(
-                    Intent(
-                        context,
-                        RecipeActivity::class.java
-                    )
-                )
-
                 RegisterNavigation.NavigateToLogin -> findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                RegisterNavigation.NavigateToHome -> findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
         }
 
@@ -121,6 +113,10 @@ class RegisterFragment : Fragment() {
 
         visibilityConfirmPassword.setOnClickListener {
             toggleVisibility(passwordConfirm,visibilityConfirmPassword)
+        }
+
+        loginTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
     }

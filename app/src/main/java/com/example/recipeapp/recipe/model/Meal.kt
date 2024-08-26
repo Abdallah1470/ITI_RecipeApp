@@ -64,7 +64,9 @@ import com.google.gson.annotations.SerializedName
  */
 @Entity(tableName = "meals")
 data class Meal(
-    @SerializedName("idMeal") val idMeal: String,
+    @SerializedName("idMeal")
+    @PrimaryKey(autoGenerate = false)
+    val idMeal: String,
     @SerializedName("strArea") val strArea: String?,
     @SerializedName("strCategory") val strCategory: String?,
     @SerializedName("strCreativeCommonsConfirmed") val strCreativeCommonsConfirmed: String?,

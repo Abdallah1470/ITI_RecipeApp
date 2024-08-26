@@ -20,11 +20,24 @@ class RegisterViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun register(user: User, confirmPassword: String) {
         when {
-            user.name.isEmpty() -> registrationResultMutableLiveData.value = RegisterResult.InvalidData(ErrorType.EmptyName)
-            user.email.isEmpty() -> registrationResultMutableLiveData.value = RegisterResult.InvalidData(ErrorType.EmptyEmail)
-            !isValidEmail(user.email) -> registrationResultMutableLiveData.value = RegisterResult.InvalidData(ErrorType.InvalidEmailFormat)
-            user.password.isEmpty() -> registrationResultMutableLiveData.value = RegisterResult.InvalidData(ErrorType.EmptyPassword)
-            !checkPassword(user.password, confirmPassword) -> registrationResultMutableLiveData.value = RegisterResult.InvalidData(ErrorType.PasswordMismatch)
+            user.name.isEmpty() -> registrationResultMutableLiveData.value =
+                RegisterResult.InvalidData(ErrorType.EmptyName)
+
+            user.email.isEmpty() -> registrationResultMutableLiveData.value =
+                RegisterResult.InvalidData(ErrorType.EmptyEmail)
+
+            !isValidEmail(user.email) -> registrationResultMutableLiveData.value =
+                RegisterResult.InvalidData(ErrorType.InvalidEmailFormat)
+
+            user.password.isEmpty() -> registrationResultMutableLiveData.value =
+                RegisterResult.InvalidData(ErrorType.EmptyPassword)
+
+            !checkPassword(
+                user.password,
+                confirmPassword
+            ) -> registrationResultMutableLiveData.value =
+                RegisterResult.InvalidData(ErrorType.PasswordMismatch)
+
             else -> {
                 viewModelScope.launch {
                     val result = repository.insertUser(user)
@@ -33,7 +46,8 @@ class RegisterViewModel(private val repository: UserRepository) : ViewModel() {
                             registrationResultMutableLiveData.postValue(RegisterResult.RegisterSuccessful)
                             registerNavigationMutableLiveData.postValue(RegisterNavigation.NavigateToHome)
                         }
-                        else-> {
+
+                        else -> {
                             registrationResultMutableLiveData.postValue(RegisterResult.RegisterError)
                         }
                     }
@@ -70,3 +84,6 @@ sealed class RegisterNavigation {
     object NavigateToHome : RegisterNavigation()
     object NavigateToLogin : RegisterNavigation()
 }
+
+
+

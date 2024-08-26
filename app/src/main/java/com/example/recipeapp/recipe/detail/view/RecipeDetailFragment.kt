@@ -64,9 +64,8 @@ class RecipeDetailFragment : Fragment() {
                 ) // Replace `userId = 1` with actual user ID
             }
             lifecycleScope.launch {
-                isChecked = viewModel.inFavorites(
-                    userId = 1, recipeId = args.recipeId
-                ) // Replace `userId = 1` with actual user ID
+                viewModel.inFavorites(userId = 1, recipeId = args.recipeId) // Replace `userId = 1` with actual user ID
+                isChecked = viewModel.isFavorite.value ?: false
             }
         }
 

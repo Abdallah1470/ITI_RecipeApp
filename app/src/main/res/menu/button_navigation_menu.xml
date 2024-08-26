@@ -1,21 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/home"
-        android:title=""
-        android:icon="@drawable/home"/>
+        android:icon="@drawable/home"
+        android:title="Home" />
 
     <item
         android:id="@+id/search"
-        android:title=""
-        android:icon="@drawable/search" />
+        android:icon="@drawable/search"
+        android:title="Search" />
     <item
         android:id="@+id/favorite"
-        android:title=""
-        android:icon="@drawable/heart"/>
+        android:icon="@drawable/heart"
+        android:title="Favorite" />
     <item
         android:id="@+id/profile"
-        android:title=""
-        android:icon="@drawable/user"/>
-
+        android:icon="@drawable/user"
+        android:title="Profile" />
 </menu>

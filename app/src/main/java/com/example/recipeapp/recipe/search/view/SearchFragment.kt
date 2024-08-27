@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
@@ -77,6 +78,19 @@ class SearchFragment : Fragment(), SearchAdapter.OnItemClickListener {
             val query = editable.toString()
             viewModel.searchRecipes(query)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Get the Activity Toolbar
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+
+        // show the back arrow
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+
+        // title for this fragment
+        actionBar?.title = "Search"
     }
 
     override fun onItemClick(meal: Meal) {

@@ -7,12 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.example.recipeapp.recipe.favorite.model.Favorite
 import com.example.recipeapp.recipe.favorite.model.FavoriteRepository
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
+import com.example.recipeapp.recipe.model.Meal
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(private val repository: FavoriteRepository) : ViewModel() {
 
-    private val _favoriteResultMutableLiveData = MutableLiveData<MutableList<MealsOfCategory>?>()
-    val favoriteLiveData: MutableLiveData<MutableList<MealsOfCategory>?> get() = _favoriteResultMutableLiveData
+    private val _favoriteResultMutableLiveData = MutableLiveData<List<Meal>?>()
+    val favoriteLiveData: MutableLiveData<List<Meal>?> get() = _favoriteResultMutableLiveData
 
     fun getMealsFavorite(id: Int) {
         viewModelScope.launch {
@@ -20,7 +21,7 @@ class FavoriteViewModel(private val repository: FavoriteRepository) : ViewModel(
         }
     }
 
-    fun deleteFromFavorite(meal: MealsOfCategory, userId: Int) {
+    fun deleteFromFavorite(meal: Meal, userId: Int) {
         viewModelScope.launch {
             repository.removeMealFromFavorites(userId, meal)
         }

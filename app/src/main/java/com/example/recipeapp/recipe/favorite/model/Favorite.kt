@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
+import com.example.recipeapp.recipe.model.Meal
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "favorite")
@@ -13,5 +14,5 @@ data class Favorite(
     @SerializedName("id")
     val userId: Int = 0,
     @SerializedName("favoriteMales")
-    val favoriteMales: MutableList<MealsOfCategory>? = arrayListOf()
+    val favoriteMales: MutableList<Meal>? = arrayListOf()
 )

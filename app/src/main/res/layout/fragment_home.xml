@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".recipe.home.view.HomeFragment">
 
     <LinearLayout
@@ -18,27 +19,70 @@
             android:text="@string/category"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="70dp" />
+            android:layout_marginHorizontal="10dp" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:shimmer_duration="800">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <include layout="@layout/meal_row_shimmer" />
+
+                <include layout="@layout/meal_row_shimmer" />
+
+                <include layout="@layout/meal_row_shimmer" />
+
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
+            android:visibility="gone"
             android:orientation="vertical"
             android:layout_marginTop="18dp" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Recommended for You"
+            android:text="Recommended"
             android:textSize="18sp"
             android:layout_marginHorizontal="10dp"
             android:textStyle="bold"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container_recommended"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:shimmer_duration="800">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <include layout="@layout/meal_row_shimmer"/>
+
+                <include layout="@layout/meal_row_shimmer"/>
+
+                <include layout="@layout/meal_row_shimmer"/>
+
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewRecommended"
@@ -46,8 +90,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:orientation="vertical"
+            android:visibility="gone"
             android:layout_marginTop="18dp" />
-
 
     </LinearLayout>
 </FrameLayout>

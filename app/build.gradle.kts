@@ -93,4 +93,7 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
 
+    // shimmer animation
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+
 }

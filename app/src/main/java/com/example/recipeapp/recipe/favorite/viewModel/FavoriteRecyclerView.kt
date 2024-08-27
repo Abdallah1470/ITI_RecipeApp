@@ -12,27 +12,32 @@ import com.example.recipeapp.R
 import com.example.recipeapp.recipe.favorite.FavoriteFragment
 import com.example.recipeapp.recipe.favorite.FavoriteFragmentDirections
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
+import com.example.recipeapp.recipe.model.Meal
 
 data class FavoriteRecyclerView(
-    private val meals: MutableList<MealsOfCategory>?,
     private val userId: Int,
     private val viewModel: FavoriteViewModel,
     private val navController: NavController
 ) :
 RecyclerView.Adapter<FavoriteRecyclerView.MyHolder>() {
-
+    private var meals: List<Meal> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_row, parent, false)
         return MyHolder(view)
     }
 
+    fun setData(meal: List<Meal>) {
+        this.meals = meal
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
-        return meals?.size ?: 0
+        return meals.size
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         holder.removeFromFavorite.setImageResource(R.drawable.lover)
-        if (meals?.isNotEmpty() == true) {
+        if (meals.isNotEmpty()) {
             val imageUrl = meals[position].strMealThumb
             if (imageUrl != null) {
                 holder.showImage(imageUrl)
@@ -43,7 +48,6 @@ RecyclerView.Adapter<FavoriteRecyclerView.MyHolder>() {
             holder.removeFromFavorite.setOnClickListener {
                 holder.removeFromFavorite.setImageResource(R.drawable.heart)
                 viewModel.deleteFromFavorite(meals[position],userId)
-                meals.removeAt(position)
                 notifyItemRemoved(position)
             }
             holder.itemView.setOnClickListener {

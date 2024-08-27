@@ -1,10 +1,11 @@
 package com.example.recipeapp.recipe.favorite.model
 
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
+import com.example.recipeapp.recipe.model.Meal
 
 class FavoriteRepository(private val favoriteDao: FavoriteDao) {
 
-    suspend fun addMealToFavorites(userId: Int, meal: MealsOfCategory) {
+    suspend fun addMealToFavorites(userId: Int, meal: Meal) {
         // Retrieve the existing Favorite record
         val favorite = favoriteDao.getAllFavorite(userId)
 
@@ -24,7 +25,7 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao) {
         return favoriteDao.getAllFavorite(id)
     }
 
-    suspend fun removeMealFromFavorites(userId: Int, meal: MealsOfCategory) {
+    suspend fun removeMealFromFavorites(userId: Int, meal: Meal) {
         // Retrieve the existing Favorite record
         val favorite = favoriteDao.getAllFavorite(userId)
 

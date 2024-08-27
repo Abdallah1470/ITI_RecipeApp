@@ -14,6 +14,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
+import com.example.recipeapp.auth.login.view.USER_ID
+import com.example.recipeapp.auth.login.view.userSharedPreferences
 import com.example.recipeapp.auth.register.model.UserDatabase
 import com.example.recipeapp.auth.register.model.UserRepository
 import com.example.recipeapp.databinding.FragmentRecipeDetailBinding
@@ -60,11 +62,14 @@ class RecipeDetailFragment : Fragment() {
         binding.favoritesCheckbox.apply {
             setOnCheckedChangeListener { button, isChecked ->
                 viewModel.updateFavoriteStatus(
-                    isChecked, userId = 1, recipeId = args.recipeId
+                    isChecked, getUser().toLong(), recipeId = args.recipeId
                 ) // Replace `userId = 1` with actual user ID
             }
             lifecycleScope.launch {
-                viewModel.inFavorites(userId = 1, recipeId = args.recipeId) // Replace `userId = 1` with actual user ID
+                viewModel.inFavorites(
+                    getUser().toLong(),
+                    recipeId = args.recipeId
+                ) // Replace `userId = 1` with actual user ID
                 isChecked = viewModel.isFavorite.value ?: false
             }
         }
@@ -95,5 +100,8 @@ class RecipeDetailFragment : Fragment() {
             settings.javaScriptEnabled = true
             loadUrl(url)
         }
+    }
+    private fun getUser(): Int {
+        return userSharedPreferences.getLong(USER_ID,-1).toInt()
     }
 }

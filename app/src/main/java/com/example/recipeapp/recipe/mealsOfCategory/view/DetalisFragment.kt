@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -25,11 +26,13 @@ import com.example.recipeapp.recipe.network.MealsRequest
 
 class DetalisFragment : Fragment() {
     private lateinit var mealsRecyclerView: RecyclerView
+
     private val args: DetalisFragmentArgs by navArgs()
 
     private val viewModel: MealsViewModel by viewModels() {
         val remote = MealRemoteImpl(MealsRequest)
-        val favorite = FavoriteRepository(FavoriteDatabase.getInstance(requireContext()).favoriteDao())
+        val favorite =
+            FavoriteRepository(FavoriteDatabase.getInstance(requireContext()).favoriteDao())
         Log.d("main Details  fragment", args.categoryName)
         MealViewModelFactory(favorite, MealRepositoryImpl(remote), args.categoryName)
     }
@@ -41,15 +44,34 @@ class DetalisFragment : Fragment() {
 
         mealsRecyclerView = view.findViewById(R.id.recyclerViewMeals)
 
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val mealsListAdapter = MealsAdapter(viewModel, findNavController(), getUser())
+        mealsRecyclerView.adapter = mealsListAdapter
+
         viewModel.fetchMeals()
         viewModel.meal.observe(viewLifecycleOwner) { meals ->
-            mealsRecyclerView.adapter = MealsRecyclerView(meals,viewModel,getUser(),findNavController())
+            mealsListAdapter.setData(meals)
             mealsRecyclerView.layoutManager = GridLayoutManager(
                 requireContext(), getColumSpan(requireContext().applicationContext)
             )
 
         }
-        return view
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Get the Activity Toolbar
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+
+        // show the back arrow
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+
+        // title for this fragment
+        actionBar?.title = args.categoryName
     }
 
 

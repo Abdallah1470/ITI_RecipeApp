@@ -10,28 +10,29 @@ import com.example.recipeapp.recipe.favorite.model.Favorite
 import com.example.recipeapp.recipe.favorite.model.FavoriteRepository
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
 import com.example.recipeapp.recipe.model.CategoryMeals
+import com.example.recipeapp.recipe.model.Meal
 import kotlinx.coroutines.launch
 
 class MealsViewModel(private val repository: MealRepositoryImpl,private val favoriteRepository: FavoriteRepository ,private val name:String):ViewModel() {
 
-    private val _meal = MutableLiveData<List<MealsOfCategory>>()
-    val meal: LiveData<List<MealsOfCategory>> get() = _meal
+    private val _meal = MutableLiveData<List<Meal>>()
+    val meal: LiveData<List<Meal>> get() = _meal
 
     fun fetchMeals() {
         viewModelScope.launch {
             Log.d("main", repository.getMealByCategoryName(name).toString())
-            _meal.postValue(repository.getMealByCategoryName(name).meals)
+            _meal.postValue(repository.getMealByCategoryName(name))
             Log.d("main", _meal.value.toString())
         }
     }
 
-    fun insertToFavorite(meal: MealsOfCategory, id: Int) {
+    fun insertToFavorite(meal: Meal, id: Int) {
         viewModelScope.launch {
-            favoriteRepository.addMealToFavorites(id,meal)
+            favoriteRepository.addMealToFavorites(id, meal)
         }
     }
 
-    fun deleteFromFavorite(meal: MealsOfCategory, id: Int) {
+    fun deleteFromFavorite(meal: Meal, id: Int) {
         viewModelScope.launch {
             favoriteRepository.removeMealFromFavorites(id,meal)
         }

@@ -5,26 +5,35 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.homerecipe.home.model.repo.CategoryRemoteImpl
+import com.example.recipeapp.recipe.home.model.repo.CategoryRemoteImpl
 import com.example.homerecipe.home.model.repo.CategoryViewModelFactory
 import com.example.recipeapp.recipe.home.model.repo.CategoryRepositoryImpl
-import com.example.recipeapp.recipe.home.viewModel.CategoryViewModel
+import com.example.recipeapp.recipe.home.viewModel.HomeViewModel
 import com.example.recipeapp.R
+import com.example.recipeapp.auth.login.view.USER_ID
+import com.example.recipeapp.auth.login.view.userSharedPreferences
+import com.example.recipeapp.recipe.favorite.model.FavoriteDatabase
+import com.example.recipeapp.recipe.favorite.model.FavoriteRepository
 import com.example.recipeapp.recipe.network.MealsRequest
+import com.facebook.shimmer.ShimmerFrameLayout
 
 class HomeFragment : Fragment() {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var recommenddRecyclerView: RecyclerView
+    private lateinit var categoryRecyclerView: RecyclerView
+    private lateinit var recommendedRecyclerView: RecyclerView
+    private lateinit var shimmerRecommended: ShimmerFrameLayout
+    private lateinit var shimmerCategory: ShimmerFrameLayout
 
-    private val viewModel: CategoryViewModel by viewModels(){
+    private val viewModel: HomeViewModel by viewModels() {
         val remote = CategoryRemoteImpl(MealsRequest.service)
-        CategoryViewModelFactory(CategoryRepositoryImpl(remote))
+        val favorite =
+            FavoriteRepository(FavoriteDatabase.getInstance(requireContext()).favoriteDao())
+        CategoryViewModelFactory(CategoryRepositoryImpl(remote),favorite)
     }
 
     override fun onCreateView(
@@ -34,22 +43,60 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        recyclerView = view.findViewById(R.id.recyclerViewHome)
-        recommenddRecyclerView = view.findViewById(R.id.recyclerViewRecommended)
+        categoryRecyclerView = view.findViewById(R.id.recyclerViewHome)
+        recommendedRecyclerView = view.findViewById(R.id.recyclerViewRecommended)
+        shimmerCategory = view.findViewById(R.id.shimmer_view_container_category)
+        shimmerRecommended = view.findViewById(R.id.shimmer_view_container_recommended)
 
-        val navController = findNavController()
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val categoryListAdapter = HomeAdapter(findNavController())
+        val recommendedListAdapter = RecommendedAdapter(findNavController(),viewModel,getUser())
+
+
+        categoryRecyclerView.adapter = categoryListAdapter
+        recommendedRecyclerView.adapter = recommendedListAdapter
 
         viewModel.fetchProducts()
         viewModel.data.observe(viewLifecycleOwner) { data ->
-            recyclerView.adapter = HomeRecycleView(data, navController)
-            recyclerView.layoutManager =
+
+            categoryListAdapter.setData(data)
+
+            categoryRecyclerView.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-            recommenddRecyclerView.adapter = HomeRecycleView(data, navController)
-            recommenddRecyclerView.layoutManager =
-                GridLayoutManager(requireContext(),2)
-
+            shimmerCategory.stopShimmer()
+            shimmerCategory.visibility = View.GONE
+            categoryRecyclerView.visibility = View.VISIBLE
         }
-        return view
+
+        viewModel.getMealRecommended()
+        viewModel.recommendedMeal.observe(viewLifecycleOwner) { meal ->
+
+            recommendedListAdapter.setData(meal)
+
+            recommendedRecyclerView.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+            shimmerRecommended.stopShimmer()
+            shimmerRecommended.visibility = View.GONE
+            recommendedRecyclerView.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Get the Activity Toolbar
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+
+        // Hide the back arrow
+        actionBar?.setDisplayHomeAsUpEnabled(false)
+        actionBar?.setDisplayShowHomeEnabled(false)
+    }
+
+    private fun getUser(): Int {
+        return userSharedPreferences.getLong(USER_ID, -1).toInt()
     }
 }

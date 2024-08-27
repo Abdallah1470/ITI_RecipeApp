@@ -12,31 +12,38 @@ import com.bumptech.glide.Glide
 import com.example.homerecipe.home.model.Category
 import com.example.recipeapp.R
 
-class HomeRecycleView(private val meels: List<Category>, private val navController: NavController):RecyclerView.Adapter<HomeRecycleView.MyHolder>() {
+class HomeAdapter(private val navigation:NavController) :
+    RecyclerView.Adapter<HomeAdapter.MyHolder>() {
 
+    private var meals: List<Category> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.category_row, parent, false)
         return MyHolder(view)
     }
 
     override fun getItemCount(): Int {
-        return meels.size
+        return meals.size
+    }
+
+    fun setData(meal:List<Category>){
+        meals = meal
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        if (meels.isNotEmpty()) {
-            val imageUrl = meels[position].strCategoryThumb
+        if (meals.isNotEmpty()) {
+            val imageUrl = meals[position].strCategoryThumb
             if (imageUrl != null) {
                 holder.showImage(imageUrl)
             }
-            holder.setMealName(meels[position].strCategory.toString())
+            holder.setMealName(meals[position].strCategory.toString())
         }
 
         holder.itemView.setOnClickListener {
-            val categoryItemName = meels[position].strCategory.toString()
+            val categoryItemName = meals[position].strCategory.toString()
+
             val action = HomeFragmentDirections.actionHomeFragmentToDetalisFragment(categoryItemName)
-            Log.d("main",categoryItemName)
-            navController.navigate(action)
+            navigation.navigate(action)
         }
     }
 

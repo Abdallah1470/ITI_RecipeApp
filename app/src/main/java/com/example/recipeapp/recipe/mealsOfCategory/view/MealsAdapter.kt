@@ -1,6 +1,5 @@
 package com.example.recipeapp.recipe.mealsOfCategory.view
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,20 +10,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recipeapp.recipe.mealsOfCategory.viewModel.MealsViewModel
 import com.example.recipeapp.R
-import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
+import com.example.recipeapp.recipe.model.Meal
 
 private var isChecked:Boolean = false
-class MealsRecyclerView(
-    private val meals: List<MealsOfCategory>?,
+class MealsAdapter(
     private val viewModel: MealsViewModel,
-    private val userId:Int,
-    private val navController: NavController
+    private val navController: NavController,
+    private val userId:Int
 ) :
-    RecyclerView.Adapter<MealsRecyclerView.MyHolder>() {
+    RecyclerView.Adapter<MealsAdapter.MyHolder>() {
 
+    private  var meals: List<Meal> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_row, parent, false)
         return MyHolder(view)
+    }
+
+    fun setData(meal: List<Meal>) {
+        this.meals = meal
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
@@ -43,16 +47,15 @@ class MealsRecyclerView(
                 isChecked = !isChecked
                 if (isChecked) {
                     holder.addToFavorite.setImageResource(R.drawable.lover)
-                    viewModel.insertToFavorite(meals[position],userId)
+                    viewModel.insertToFavorite(meals[position], userId)
                 } else {
                     holder.addToFavorite.setImageResource(R.drawable.heart)
-                    viewModel.deleteFromFavorite(meals[position],userId)
+                    viewModel.deleteFromFavorite(meals[position], userId)
                 }
 
             }
             holder.itemView.setOnClickListener {
-                Log.d("Meal","Meal id = ${meals.get(position).idMeal}")
-                val action = DetalisFragmentDirections.actionDetalisFragmentToRecipeDetailFragment((meals[position].idMeal).toString())
+                val action = DetalisFragmentDirections.actionDetalisFragmentToRecipeDetailFragment((meals[position].idMeal))
                 navController.navigate(action)
             }
         }

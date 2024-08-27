@@ -1,5 +1,6 @@
-package com.example.recipeapp.recipe.favorite.viewModel
+package com.example.recipeapp.recipe.home.view
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,34 +10,34 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
-import com.example.recipeapp.recipe.favorite.FavoriteFragment
-import com.example.recipeapp.recipe.favorite.FavoriteFragmentDirections
-import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
+import com.example.recipeapp.auth.login.view.USER_ID
+import com.example.recipeapp.recipe.home.viewModel.HomeViewModel
+import com.example.recipeapp.recipe.mealsOfCategory.view.DetalisFragmentDirections
+import com.example.recipeapp.recipe.mealsOfCategory.viewModel.MealsViewModel
 import com.example.recipeapp.recipe.model.Meal
 
-data class FavoriteRecyclerView(
-    private val userId: Int,
-    private val viewModel: FavoriteViewModel,
-    private val navController: NavController
+private var isChecked: Boolean = false
+
+class RecommendedAdapter(private val navController: NavController, private val viewModel: HomeViewModel,private val userID:Int
 ) :
-RecyclerView.Adapter<FavoriteRecyclerView.MyHolder>() {
+    RecyclerView.Adapter<RecommendedAdapter.MyHolder>() {
+
     private var meals: List<Meal> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_row, parent, false)
         return MyHolder(view)
     }
 
-    fun setData(meal: List<Meal>) {
-        this.meals = meal
-        notifyDataSetChanged()
-    }
-
     override fun getItemCount(): Int {
         return meals.size
     }
 
+    fun setData(meal: List<Meal>) {
+        meals = meal
+        notifyDataSetChanged()
+    }
+
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        holder.removeFromFavorite.setImageResource(R.drawable.lover)
         if (meals.isNotEmpty()) {
             val imageUrl = meals[position].strMealThumb
             if (imageUrl != null) {
@@ -44,25 +45,33 @@ RecyclerView.Adapter<FavoriteRecyclerView.MyHolder>() {
             }
             holder.setMealName(meals[position].strMeal.toString())
 
+            holder.addToFavorite.setOnClickListener {
+                isChecked = !isChecked
+                if (isChecked) {
+                    holder.addToFavorite.setImageResource(R.drawable.lover)
+                    viewModel.insertToFavorite(meals[position], userID)
+                } else {
+                    holder.addToFavorite.setImageResource(R.drawable.heart)
+                    viewModel.deleteFromFavorite(meals[position], userID)
+                }
 
-            holder.removeFromFavorite.setOnClickListener {
-                holder.removeFromFavorite.setImageResource(R.drawable.heart)
-                viewModel.deleteFromFavorite(meals[position],userId)
-                notifyItemRemoved(position)
             }
             holder.itemView.setOnClickListener {
+                Log.d("Meal", "Meal id = ${meals[position].idMeal}")
                 val action =
-                    FavoriteFragmentDirections.actionFavoriteFragment2ToRecipeDetailFragment((meals[position].idMeal).toString())
+                    HomeFragmentDirections.actionHomeFragmentToRecipeDetailFragment((meals[position].idMeal))
                 navController.navigate(action)
             }
         }
+
     }
 
 
     class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         private val _mealImageView: ImageView = itemView.findViewById(R.id.mealImage)
         private val _mealName: TextView = itemView.findViewById(R.id.mealName)
-        val removeFromFavorite: ImageView = itemView.findViewById(R.id.mealFavorite)
+        val addToFavorite: ImageView = itemView.findViewById(R.id.mealFavorite)
 
 
         fun showImage(imageUrl:String) {
@@ -72,7 +81,7 @@ RecyclerView.Adapter<FavoriteRecyclerView.MyHolder>() {
                 .into(_mealImageView)
         }
 
-        fun setMealName(mealName: String) {
+        fun setMealName(mealName: String){
             this._mealName.text = mealName
         }
 

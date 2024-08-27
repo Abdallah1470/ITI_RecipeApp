@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -40,16 +41,34 @@ class FavoriteFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val favoriteMeals = FavoriteRecyclerView(getUser(), viewModel, findNavController())
+        recyclerView.adapter = favoriteMeals
 
         viewModel.getMealsFavorite(getUser())
         viewModel.favoriteLiveData.observe(viewLifecycleOwner) { data ->
-            recyclerView.adapter = FavoriteRecyclerView(data,getUser(),viewModel,findNavController())
+            if (data != null) {
+                favoriteMeals.setData(data)
+            }
             recyclerView.layoutManager =
                 GridLayoutManager(
                     requireContext(),
                     DetalisFragment().getColumSpan(requireContext().applicationContext)
                 )
         }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        // Get the Activity Toolbar
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+
+        // show the back arrow
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
+
+        // Optional: Set a different title for this fragment
+        actionBar?.title = "Favorite"
     }
 
     private fun getUser(): Int {

@@ -2,17 +2,16 @@ package com.example.recipeapp.recipe.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.recipeapp.R
 import com.example.recipeapp.auth.login.view.AuthActivity
-import com.example.recipeapp.auth.login.view.IS_LOGGED
+import com.example.recipeapp.auth.login.view.IS_LOGIN
 import com.example.recipeapp.auth.login.view.userSharedPreferences
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -22,7 +21,8 @@ class RecipeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //enableEdgeToEdge()
+        // Set the windowSoftInputMode programmatically
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         setContentView(R.layout.app_bar_main)
 
@@ -83,11 +83,23 @@ class RecipeActivity : AppCompatActivity() {
             }
 
             R.id.sigOut -> {
-                userSharedPreferences.edit().putBoolean(IS_LOGGED, false).apply()
+                userSharedPreferences.edit().putBoolean(IS_LOGIN, false).apply()
                 startActivity(Intent(this, AuthActivity::class.java))
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp() || super.onNavigateUp()
+    }
+
+    override fun onBackPressed() {
+        val navController = findNavController(R.id.nav_host_fragment)
+        if (!navController.popBackStack()) {
+            super.onBackPressed()
+        }
+    }
+
 }

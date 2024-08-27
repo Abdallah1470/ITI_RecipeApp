@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.homerecipe.home.model.repo.CategoryRemoteImpl
+import com.example.recipeapp.recipe.home.model.repo.CategoryRemoteImpl
 import com.example.homerecipe.home.model.repo.CategoryViewModelFactory
 import com.example.recipeapp.recipe.home.model.repo.CategoryRepositoryImpl
 import com.example.recipeapp.recipe.home.viewModel.CategoryViewModel
@@ -37,19 +37,28 @@ class HomeFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerViewHome)
         recommenddRecyclerView = view.findViewById(R.id.recyclerViewRecommended)
 
-        val navController = findNavController()
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val CategoryListAdapter = HomeAdapter(findNavController())
+        val recommendedListAdapter = RecommendedAdapter(findNavController())
 
         viewModel.fetchProducts()
-        viewModel.data.observe(viewLifecycleOwner) { data ->
-            recyclerView.adapter = HomeRecycleView(data, navController)
+        viewModel.data.observe(viewLifecycleOwner) {data->
+            CategoryListAdapter.setData(data)
             recyclerView.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-            recommenddRecyclerView.adapter = HomeRecycleView(data, navController)
-            recommenddRecyclerView.layoutManager =
-                GridLayoutManager(requireContext(),2)
-
         }
-        return view
+
+        viewModel.getMealRecommended()
+        viewModel.recommendedMeal.observe(viewLifecycleOwner) {meal->
+
+            recommendedListAdapter.setData(meal)
+            recommenddRecyclerView.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        }
     }
 }

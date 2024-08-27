@@ -12,8 +12,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import com.airbnb.lottie.LottieAnimationView
 import com.example.recipeapp.R
 import com.example.recipeapp.databinding.FragmentSplashBinding
 import com.example.recipeapp.recipe.home.RecipeActivity
@@ -22,7 +20,7 @@ import kotlinx.coroutines.launch
 
 const val PREF_NAME = "myPreferences"
 const val USER_ID = "id"
-const val IS_LOGGED = "logged"
+const val IS_LOGIN = "logged"
 lateinit var userSharedPreferences: SharedPreferences
 
 class SplashFragment : Fragment() {
@@ -32,7 +30,8 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false)
-        userSharedPreferences = (context?.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE) ?:0) as SharedPreferences
+        userSharedPreferences = (context?.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            ?: 0) as SharedPreferences
 
         return binding.root
     }
@@ -47,11 +46,19 @@ class SplashFragment : Fragment() {
                     lifecycleScope.launch {
                         animate().translationX(1000f).setDuration(1000).start()
                         delay(500)
-                        val login = userSharedPreferences.getBoolean(IS_LOGGED, false)
-                        if (!login) {
+                        val isLogin = userSharedPreferences.getBoolean(IS_LOGIN, false)
+                        if (isLogin) {
+                            startActivity(
+                                Intent(
+                                    requireContext().applicationContext,
+                                    RecipeActivity::class.java
+                                )
+                            )
+
+                        } else {
                             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-                        } else
-                            startActivity(Intent(requireContext().applicationContext,RecipeActivity::class.java))
+                            requireActivity().finish()
+                        }
                     }
                 }
             })

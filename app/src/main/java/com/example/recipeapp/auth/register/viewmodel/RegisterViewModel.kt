@@ -41,10 +41,10 @@ class RegisterViewModel(private val repository: UserRepository) : ViewModel() {
             else -> {
                 viewModelScope.launch {
                     val result = repository.insertUser(user)
-                    when(result) {
+                    when (result) {
                         true -> {
                             registrationResultMutableLiveData.postValue(RegisterResult.RegisterSuccessful)
-                            registerNavigationMutableLiveData.postValue(RegisterNavigation.NavigateToHome)
+                            registerNavigationMutableLiveData.postValue(RegisterNavigation.NavigateToLogin)
                         }
 
                         else -> {
@@ -81,7 +81,6 @@ sealed class ErrorType {
 }
 
 sealed class RegisterNavigation {
-    object NavigateToHome : RegisterNavigation()
     object NavigateToLogin : RegisterNavigation()
 }
 

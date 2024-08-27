@@ -33,8 +33,6 @@ class RegisterFragment : Fragment() {
     private lateinit var passwordConfirm: EditText
     private lateinit var registerButton: Button
     private lateinit var loginTextView: TextView
-    private lateinit var visibilityPassword:ImageView
-    private lateinit var visibilityConfirmPassword:ImageView
 
 
     private val regViewModel: RegisterViewModel by viewModels {
@@ -56,8 +54,6 @@ class RegisterFragment : Fragment() {
         passwordConfirm = view.findViewById(R.id.confirm_password_signup)
         registerButton = view.findViewById(R.id.button_register)
         loginTextView = view.findViewById(R.id.go_to_sign_up)
-        visibilityPassword = view.findViewById(R.id.password_create_visibility_toggle)
-        visibilityConfirmPassword = view.findViewById(R.id.repet_password_create_visibility_toggle)
 
         return view
     }
@@ -102,17 +98,7 @@ class RegisterFragment : Fragment() {
         regViewModel.registerNavigationLiveData.observe(viewLifecycleOwner) { navigation ->
             when (navigation) {
                 RegisterNavigation.NavigateToLogin -> findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-                RegisterNavigation.NavigateToHome -> findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
             }
-        }
-
-
-        visibilityPassword.setOnClickListener {
-            toggleVisibility(password,visibilityPassword)
-        }
-
-        visibilityConfirmPassword.setOnClickListener {
-            toggleVisibility(passwordConfirm,visibilityConfirmPassword)
         }
 
         loginTextView.setOnClickListener {
@@ -130,20 +116,5 @@ class RegisterFragment : Fragment() {
             ErrorType.EmptyPassword -> password.error = "Password cannot be empty"
             ErrorType.PasswordMismatch -> passwordConfirm.error = "Passwords do not match"
         }
-    }
-
-    // function to toggle visibility of password
-    fun toggleVisibility(password: EditText, visibilityPassword: ImageView) {
-        if (password.transformationMethod is PasswordTransformationMethod) {
-            // Show password
-            password.transformationMethod = HideReturnsTransformationMethod.getInstance()
-            visibilityPassword.setImageResource(R.drawable.show_password)
-        } else {
-            // Hide password
-            password.transformationMethod = PasswordTransformationMethod.getInstance()
-            visibilityPassword.setImageResource(R.drawable.unshow_pass)
-        }
-        // Move the cursor to the end of the text
-        password.setSelection(password.text.length)
     }
 }

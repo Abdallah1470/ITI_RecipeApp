@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
@@ -20,7 +19,6 @@ import com.example.recipeapp.auth.login.viewmodel.LoginResult
 import com.example.recipeapp.auth.login.viewmodel.LoginViewModel
 import com.example.recipeapp.auth.register.model.UserDatabase
 import com.example.recipeapp.auth.register.model.UserRepository
-import com.example.recipeapp.auth.register.view.RegisterFragment
 import com.example.recipeapp.recipe.home.RecipeActivity
 
 class LoginFragment : Fragment() {
@@ -28,8 +26,7 @@ class LoginFragment : Fragment() {
     private lateinit var email: EditText
     private lateinit var password: EditText
     private lateinit var loginButton: Button
-    private lateinit var registeTextView: TextView
-    private lateinit var visabilityPassword: ImageView
+    private lateinit var registerTextView: TextView
 
     private val loginViewModel: LoginViewModel by viewModels {
         LoginViewModelFactory(UserRepository(UserDatabase.getInstance(requireContext().applicationContext).userDao()))
@@ -45,8 +42,7 @@ class LoginFragment : Fragment() {
         email = view.findViewById(R.id.input_field_email)
         password = view.findViewById(R.id.input_password)
         loginButton = view.findViewById(R.id.button_login)
-        registeTextView = view.findViewById(R.id.go_to_sign_up)
-        visabilityPassword = view.findViewById(R.id.password_create_visibility_toggle)
+        registerTextView = view.findViewById(R.id.go_to_sign_up)
 
 
         return view
@@ -54,14 +50,10 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        registeTextView.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterFragment())
-        }
-
         loginButton.setOnClickListener {
             val strEmail = email.text.toString()
             val strPassword = password.text.toString()
-            loginViewModel.login(requireContext().applicationContext, strEmail, strPassword)
+            loginViewModel.login(strEmail, strPassword)
         }
 
 
@@ -69,13 +61,13 @@ class LoginFragment : Fragment() {
             when (result) {
                 is LoginResult.LoginSuccessful -> Toast.makeText(
                     context,
-                    "Registration successful",
+                    "Login successful",
                     Toast.LENGTH_SHORT
                 ).show()
 
                 is LoginResult.LoginError -> Toast.makeText(
                     context,
-                    "Registration failed",
+                    "Login failed",
                     Toast.LENGTH_SHORT
                 ).show()
 
@@ -88,12 +80,14 @@ class LoginFragment : Fragment() {
                 LoginNavigation.NavigateToHome -> startActivity(
                     Intent(context, RecipeActivity::class.java)
                 )
+
+                LoginNavigation.NavigateToRegister -> findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
             }
         }
 
 
-        visabilityPassword.setOnClickListener {
-            RegisterFragment().toggleVisibility(password,visabilityPassword)
+        registerTextView.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
     }

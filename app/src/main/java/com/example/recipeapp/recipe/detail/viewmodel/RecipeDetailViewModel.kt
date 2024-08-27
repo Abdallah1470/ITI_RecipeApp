@@ -14,6 +14,9 @@ class RecipeDetailViewModel(private val repository: UserRepository) : ViewModel(
     private val _meal = MutableLiveData<Meal?>()
     val meal: LiveData<Meal?> = _meal
 
+    private val _isFavorite = MutableLiveData<Boolean>()
+    val isFavorite: LiveData<Boolean> = _isFavorite
+
     private val _youtubeUrl = MutableLiveData<String?>()
     val youtubeUrl: LiveData<String?> = _youtubeUrl
 
@@ -72,8 +75,10 @@ class RecipeDetailViewModel(private val repository: UserRepository) : ViewModel(
         }
     }
 
-    suspend fun inFavorites(userId: Long, recipeId: String):Boolean{
-        return repository.isFavorite(userId,recipeId)
+    fun inFavorites(userId: Long, recipeId: String){
+        viewModelScope.launch {
+            _isFavorite.value = repository.isFavorite(userId, recipeId)
+        }
     }
 
     private fun extractYouTubeVideoId(url: String): String? {

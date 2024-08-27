@@ -46,6 +46,7 @@ class RecipeActivity : AppCompatActivity() {
 
                 R.id.search -> {
                     showToast("Search clicked")
+                    navController.navigate(R.id.searchFragment)
                     true
                 }
 

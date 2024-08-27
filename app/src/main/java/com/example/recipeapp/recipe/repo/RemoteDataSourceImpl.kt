@@ -1,5 +1,6 @@
 package com.example.recipeapp.recipe.repo
 
+import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
 import com.example.recipeapp.recipe.model.Meal
 import com.example.recipeapp.recipe.network.MealsService
 
@@ -20,5 +21,16 @@ class RemoteDataSourceImpl(private val service: MealsService) : RemoteDataSource
      */
     override suspend fun getDataFromRemote(): List<Meal> {
         return service.getCategoryList().meals
+    }
+
+    /**
+     * Searches for meals by name.
+     * This method searches for meals by name using the provided query string.
+     *
+     * @param query The query string to search for.
+     * @return A list of Meal objects matching the search query.
+     */
+    override suspend fun searchMealsFromRemote(query: String): List<MealsOfCategory> {
+        return service.getMealByName(query).meals ?: emptyList()
     }
 }

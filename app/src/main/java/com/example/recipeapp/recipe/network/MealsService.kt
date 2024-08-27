@@ -9,6 +9,7 @@ import com.example.recipeapp.recipe.model.CategoryMeals
 import com.example.recipeapp.recipe.model.IngredientsListResponse
 import com.example.recipeapp.recipe.model.MainIngredientMeals
 import com.example.recipeapp.recipe.model.MealsResponse
+import com.example.recipeapp.recipe.model.Search
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -23,7 +24,7 @@ interface MealsService {
      * @return A [MealsResponse] containing the search results.
      */
     @GET("search.php")
-    suspend fun getMealByName(@Query("s") mealName: String): MealsResponse
+    suspend fun getMealByName(@Query("s") mealName: String): Search
 
     /**
      * Fetches meals starting with a specific letter.
@@ -101,4 +102,7 @@ interface MealsService {
      */
     @GET("filter.php")
     suspend fun getMealsByArea(@Query("a") area: String): AreaMeals
+
+    @GET("search.php")
+    suspend fun getMealsBySearch(@Query("s") search: String): MealsResponse
 }

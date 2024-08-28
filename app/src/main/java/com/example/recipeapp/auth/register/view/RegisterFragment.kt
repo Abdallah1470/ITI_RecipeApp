@@ -48,12 +48,7 @@ class RegisterFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_register, container, false)
 
         // get references
-        email = view.findViewById(R.id.input_user_email)
-        name = view.findViewById(R.id.input_field_username)
-        password = view.findViewById(R.id.password_Sign_up)
-        passwordConfirm = view.findViewById(R.id.confirm_password_signup)
-        registerButton = view.findViewById(R.id.button_register)
-        loginTextView = view.findViewById(R.id.go_to_sign_up)
+        initializeView(view)
 
         return view
     }
@@ -70,7 +65,7 @@ class RegisterFragment : Fragment() {
                 name = strName,
                 email = strEmail,
                 password = strPassword,
-                favorites = emptyList()
+                salt = regViewModel.generateSalt()
             )
 
             regViewModel.register(user, strConfirmPassword)
@@ -79,17 +74,15 @@ class RegisterFragment : Fragment() {
 
         regViewModel.registrationResultLiveData.observe(viewLifecycleOwner) { result ->
             when (result) {
-                is RegisterResult.RegisterSuccessful -> Toast.makeText(
-                    context,
-                    "Registration successful",
-                    Toast.LENGTH_SHORT
-                ).show()
+                is RegisterResult.RegisterSuccessful -> regViewModel.show_dialog(
+                    true,
+                    requireContext()
+                )
 
-                is RegisterResult.RegisterError -> Toast.makeText(
-                    context,
-                    "Registration failed",
-                    Toast.LENGTH_SHORT
-                ).show()
+                is RegisterResult.RegisterError -> regViewModel.show_dialog(
+                    false,
+                    requireContext()
+                )
 
                 is RegisterResult.InvalidData -> handleInvalidData(result.error)
             }
@@ -105,6 +98,15 @@ class RegisterFragment : Fragment() {
             findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
         }
 
+    }
+
+    private fun initializeView(view: View) {
+        email = view.findViewById(R.id.input_user_email)
+        name = view.findViewById(R.id.input_field_username)
+        password = view.findViewById(R.id.password_Sign_up)
+        passwordConfirm = view.findViewById(R.id.confirm_password_signup)
+        registerButton = view.findViewById(R.id.button_register)
+        loginTextView = view.findViewById(R.id.go_to_sign_up)
     }
 
     // check input data before Register

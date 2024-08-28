@@ -1,6 +1,6 @@
 package com.example.recipeapp.recipe.favorite.model
 
-import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
+import androidx.lifecycle.LiveData
 import com.example.recipeapp.recipe.model.Meal
 
 class FavoriteRepository(private val favoriteDao: FavoriteDao) {
@@ -42,6 +42,11 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao) {
                 favoriteDao.updateFavorite(favorite)
             }
         }
+    }
+
+    suspend fun isFavorite(userId: Int, recipeID: String): Boolean {
+        val favorite = favoriteDao.getAllFavorite(userId)
+        return favorite?.favoriteMales?.any() { it.idMeal == recipeID } ?: false
     }
 
 }

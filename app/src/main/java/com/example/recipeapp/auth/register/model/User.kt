@@ -10,6 +10,6 @@ data class User(
     val id: Int = 0,
     val name: String,
     val email: String,
-    val password: String,
-    val favorites: List<String>
+    var password: String,
+    val salt: ByteArray
 )

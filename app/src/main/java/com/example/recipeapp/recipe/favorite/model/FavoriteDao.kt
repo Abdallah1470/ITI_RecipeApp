@@ -20,4 +20,7 @@ interface FavoriteDao {
     @Delete
     suspend fun deleteFromFavorite(meal: Favorite)
 
+    @Query("SELECT EXISTS(SELECT 1 FROM favorite WHERE userId = :userId AND :recipeId IN (favoriteMales))")
+    suspend fun isFavorite(userId: Int, recipeId: String): Boolean
+
 }

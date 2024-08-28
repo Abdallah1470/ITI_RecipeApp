@@ -4,12 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.recipeapp.auth.register.model.UserRepository
+import com.example.recipeapp.recipe.favorite.model.FavoriteRepository
 import com.example.recipeapp.recipe.model.Meal
 import com.example.recipeapp.recipe.network.MealsRequest
 import kotlinx.coroutines.launch
 
-class RecipeDetailViewModel(private val repository: UserRepository) : ViewModel() {
+class RecipeDetailViewModel(
+    private val favoriteRepository: FavoriteRepository ) : ViewModel() {
 
     private val _meal = MutableLiveData<Meal?>()
     val meal: LiveData<Meal?> = _meal
@@ -65,19 +66,19 @@ class RecipeDetailViewModel(private val repository: UserRepository) : ViewModel(
         }
     }
 
-    fun updateFavoriteStatus(isChecked: Boolean, userId: Long, recipeId: String) {
+/*    fun updateFavoriteStatus(isChecked: Boolean, userId: Int) {
         viewModelScope.launch {
             if (isChecked) {
-                repository.addFavorite(userId, recipeId)
+                favoriteRepository.addMealToFavorites(userId, meal)
             } else {
-                repository.removeFavorite(userId, recipeId)
+                favoriteRepository.removeMealFromFavorites(userId, meal)
             }
         }
-    }
+    }*/
 
-    fun inFavorites(userId: Long, recipeId: String){
+    fun inFavorites(userId: Int, recipeID: String){
         viewModelScope.launch {
-            _isFavorite.value = repository.isFavorite(userId, recipeId)
+            _isFavorite.value = favoriteRepository.isFavorite(userId, recipeID)
         }
     }
 

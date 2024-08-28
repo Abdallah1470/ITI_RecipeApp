@@ -20,26 +20,7 @@ class UserRepository(private val userDao: UserDao) {
         return userDao.getUserById(id)
     }
 
-    suspend fun addFavorite(userId: Long, recipeId: String) {
-        val user = userDao.getUserById(userId)
-        user?.let {
-            val updatedFavorites = user.favorites.toMutableList().apply { add(recipeId) }
-            userDao.updateUser(user.copy(favorites = updatedFavorites))
-        }
-
-    }
-
-    suspend fun removeFavorite(userId: Long, recipeId: String) {
-        val user = userDao.getUserById(userId)
-        user?.let {
-            val updatedFavorites = user.favorites.toMutableList().apply { remove(recipeId) }
-            userDao.updateUser(user.copy(favorites = updatedFavorites))
-        }
-
-    }
-
-    suspend fun isFavorite(userId: Long, recipeId: String): Boolean {
-        val user = userDao.getUserById(userId)
-        return user?.favorites?.contains(recipeId) ?: false
+    suspend fun getUserByEmail(email: String): User? {
+        return userDao.getUserByEmail(email)
     }
 }

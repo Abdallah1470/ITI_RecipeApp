@@ -45,7 +45,7 @@ RecyclerView.Adapter<FavoriteAdapter.MyHolder>() {
 
             holder.removeFromFavorite.setOnClickListener {
                 holder.removeFromFavorite.setImageResource(R.drawable.heart)
-                viewModel.deleteFromFavorite(meals[position],userId)
+                viewModel.deleteFromFavorite(meals[position], userId)
                 notifyItemRemoved(position)
             }
             holder.itemView.setOnClickListener {

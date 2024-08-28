@@ -12,7 +12,7 @@ import com.example.recipeapp.auth.login.view.USER_ID
 import com.example.recipeapp.auth.login.view.userSharedPreferences
 import com.example.recipeapp.auth.register.model.UserRepository
 import kotlinx.coroutines.launch
-
+import java.security.MessageDigest
 
 
 class LoginViewModel(private val repository: UserRepository) : ViewModel() {
@@ -34,19 +34,19 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
 
             else -> {
                 viewModelScope.launch {
-                    when(val result = repository.login(email,password)) {
-                        (-1).toLong() -> {
-                            _resultLiveData.postValue(LoginResult.LoginError)
-                            loginNavigationLiveData.postValue(LoginNavigation.NavigateToRegister)
-
-                        }
-
-                        else -> {
-                            saveUserData(true, result)
-                            Log.d("User id = ", result.toString())
+                    val user = repository.getUserByEmail(email)
+                    val hashedPassword = user?.let { hashPassword(password, it.salt) }
+                    if (user != null) {
+                        if (hashedPassword == user.password) {
+                            saveUserData(true, user.id.toLong())
                             _resultLiveData.postValue(LoginResult.LoginSuccessful)
                             loginNavigationLiveData.postValue(LoginNavigation.NavigateToHome)
+                        } else {
+                            _resultLiveData.postValue(LoginResult.LoginError)
                         }
+                    } else {
+                        _resultLiveData.postValue(LoginResult.LoginError)
+                        loginNavigationLiveData.postValue(LoginNavigation.NavigateToRegister)
                     }
                 }
             }
@@ -61,6 +61,15 @@ class LoginViewModel(private val repository: UserRepository) : ViewModel() {
     private fun saveUserData(isLogged: Boolean, id: Long) {
         userSharedPreferences.edit().putLong(USER_ID, id).apply()
         userSharedPreferences.edit().putBoolean(IS_LOGIN, isLogged).apply()
+
+    }
+
+    // Function to hash a password with salt using SHA-256
+    private fun hashPassword(password: String, salt: ByteArray): String {
+        val md = MessageDigest.getInstance("SHA-256")
+        md.update(salt)
+        val hashedPassword = md.digest(password.toByteArray())
+        return hashedPassword.joinToString("") { "%02x".format(it) }
 
     }
 

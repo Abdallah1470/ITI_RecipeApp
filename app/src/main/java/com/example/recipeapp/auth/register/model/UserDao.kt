@@ -23,13 +23,4 @@ interface UserDao {
     @Update
     suspend fun updateUser(user: User)
 
-    @Query("SELECT EXISTS(SELECT 1 FROM user WHERE id = :userId AND :recipeId IN (favorites))")
-    suspend fun isFavorite(userId: Int, recipeId: String): Boolean
-
-    @Query("UPDATE user SET favorites = favorites || :recipeId WHERE id = :userId")
-    suspend fun addFavorite(userId: Int, recipeId: String)
-
-    @Query("UPDATE user SET favorites = (SELECT favorites FROM user WHERE id = :userId) - :recipeId WHERE id = :userId")
-    suspend fun removeFavorite(userId: Int, recipeId: String)
-
 }

@@ -16,10 +16,10 @@ import com.bumptech.glide.Glide
 import com.example.recipeapp.R
 import com.example.recipeapp.auth.login.view.USER_ID
 import com.example.recipeapp.auth.login.view.userSharedPreferences
-import com.example.recipeapp.auth.register.model.UserDatabase
-import com.example.recipeapp.auth.register.model.UserRepository
 import com.example.recipeapp.databinding.FragmentRecipeDetailBinding
 import com.example.recipeapp.recipe.detail.viewmodel.RecipeDetailViewModel
+import com.example.recipeapp.recipe.favorite.model.FavoriteDatabase
+import com.example.recipeapp.recipe.favorite.model.FavoriteRepository
 import kotlinx.coroutines.launch
 
 class RecipeDetailFragment : Fragment() {
@@ -27,8 +27,8 @@ class RecipeDetailFragment : Fragment() {
     private lateinit var binding: FragmentRecipeDetailBinding
 
     private val viewModel: RecipeDetailViewModel by viewModels {
-        val userDao = UserDatabase.getInstance(requireContext()).userDao()
-        RecipeDetailViewModelFactory(UserRepository(userDao))
+        val userDao = FavoriteDatabase.getInstance(requireContext()).favoriteDao()
+        RecipeDetailViewModelFactory(FavoriteRepository(userDao))
     }
 
     override fun onCreateView(
@@ -61,14 +61,14 @@ class RecipeDetailFragment : Fragment() {
 
         binding.favoritesCheckbox.apply {
             setOnCheckedChangeListener { button, isChecked ->
-                viewModel.updateFavoriteStatus(
-                    isChecked, getUser().toLong(), recipeId = args.recipeId
-                ) // Replace `userId = 1` with actual user ID
+              /*  viewModel.updateFavoriteStatus(
+                    isChecked, getUser()
+                ) */// Replace `userId = 1` with actual user ID
             }
             lifecycleScope.launch {
                 viewModel.inFavorites(
-                    getUser().toLong(),
-                    recipeId = args.recipeId
+                    getUser(),
+                    args.recipeId
                 ) // Replace `userId = 1` with actual user ID
                 isChecked = viewModel.isFavorite.value ?: false
             }

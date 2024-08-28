@@ -1,5 +1,6 @@
 package com.example.recipeapp.recipe.favorite.model
 
+import androidx.lifecycle.MutableLiveData
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
@@ -14,5 +15,5 @@ data class Favorite(
     @SerializedName("id")
     val userId: Int = 0,
     @SerializedName("favoriteMales")
-    val favoriteMales: MutableList<Meal>? = arrayListOf()
+    val favoriteMales: MutableList<Meal>
 )

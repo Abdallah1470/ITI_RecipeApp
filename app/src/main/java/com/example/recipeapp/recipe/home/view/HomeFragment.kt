@@ -94,6 +94,9 @@ class HomeFragment : Fragment() {
         // Hide the back arrow
         actionBar?.setDisplayHomeAsUpEnabled(false)
         actionBar?.setDisplayShowHomeEnabled(false)
+
+        actionBar?.title = resources.getString(R.string.app_name)
+
     }
 
     private fun getUser(): Int {

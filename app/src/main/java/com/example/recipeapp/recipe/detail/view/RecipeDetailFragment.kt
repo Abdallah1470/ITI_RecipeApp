@@ -1,5 +1,6 @@
 package com.example.recipeapp.recipe.detail.view
 
+import android.graphics.drawable.Drawable
 import com.example.recipeapp.recipe.detail.viewmodel.RecipeDetailViewModelFactory
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -60,17 +61,17 @@ class RecipeDetailFragment : Fragment() {
         }
 
         binding.favoritesCheckbox.apply {
-            setOnCheckedChangeListener { button, isChecked ->
-              /*  viewModel.updateFavoriteStatus(
-                    isChecked, getUser()
-                ) */// Replace `userId = 1` with actual user ID
-            }
             lifecycleScope.launch {
                 viewModel.inFavorites(
                     getUser(),
                     args.recipeId
                 ) // Replace `userId = 1` with actual user ID
                 isChecked = viewModel.isFavorite.value ?: false
+            }
+            setOnCheckedChangeListener { button, isChecked ->
+                viewModel.updateFavoriteStatus(
+                    isChecked, getUser(),args.recipeId
+                )
             }
         }
 
@@ -101,6 +102,7 @@ class RecipeDetailFragment : Fragment() {
             loadUrl(url)
         }
     }
+
     private fun getUser(): Int {
         return userSharedPreferences.getLong(USER_ID,-1).toInt()
     }

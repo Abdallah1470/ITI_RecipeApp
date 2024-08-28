@@ -66,15 +66,18 @@ class RecipeDetailViewModel(
         }
     }
 
-/*    fun updateFavoriteStatus(isChecked: Boolean, userId: Int) {
+    fun updateFavoriteStatus(isChecked: Boolean, userId: Int,recipeId: String) {
         viewModelScope.launch {
-            if (isChecked) {
-                favoriteRepository.addMealToFavorites(userId, meal)
-            } else {
-                favoriteRepository.removeMealFromFavorites(userId, meal)
+            val meal = MealsRequest.service.getMealById(recipeId).meals.firstOrNull()
+            if (meal != null) {
+                if (isChecked) {
+                    favoriteRepository.addMealToFavorites(userId, meal)
+                } else {
+                    favoriteRepository.removeMealFromFavorites(userId, meal)
+                }
             }
         }
-    }*/
+    }
 
     fun inFavorites(userId: Int, recipeID: String){
         viewModelScope.launch {

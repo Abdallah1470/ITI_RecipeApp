@@ -1,6 +1,5 @@
 package com.example.recipeapp.recipe.favorite.model
 
-import androidx.lifecycle.LiveData
 import com.example.recipeapp.recipe.model.Meal
 
 class FavoriteRepository(private val favoriteDao: FavoriteDao) {
@@ -11,7 +10,7 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao) {
 
         if (favorite != null) {
             // Add the new meal to the favoriteMales list
-            favorite.favoriteMales?.add(meal)
+            favorite.favoriteMales.add(meal)
             // Update the record in the database
             favoriteDao.updateFavorite(favorite)
         } else {
@@ -31,10 +30,10 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao) {
 
         if (favorite != null) {
             // Remove the meal from the favoriteMales list
-            favorite.favoriteMales?.remove(meal)
+            favorite.favoriteMales.remove(meal)
 
             // Update or delete the record based on the list size
-            if (favorite.favoriteMales?.isEmpty() == true) {
+            if (favorite.favoriteMales.isEmpty()) {
                 // If the list is empty, you might want to remove the entire favorite entry
                 favoriteDao.deleteFromFavorite(favorite)
             } else {
@@ -48,5 +47,6 @@ class FavoriteRepository(private val favoriteDao: FavoriteDao) {
         val favorite = favoriteDao.getAllFavorite(userId)
         return favorite?.favoriteMales?.any() { it.idMeal == recipeID } ?: false
     }
+
 
 }

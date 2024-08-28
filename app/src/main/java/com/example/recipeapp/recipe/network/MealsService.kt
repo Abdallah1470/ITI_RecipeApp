@@ -1,6 +1,6 @@
 package com.example.recipeapp.recipe.network
 
-import com.example.recipeapp.recipe.detail.MealDetailsResponse
+import com.example.recipeapp.recipe.detail.model.MealDetailsResponse
 import com.example.recipeapp.recipe.mealsOfCategory.model.ResponseMeal
 import com.example.recipeapp.recipe.home.model.CategoryListRsponse
 import com.example.recipeapp.recipe.model.AreaMeals

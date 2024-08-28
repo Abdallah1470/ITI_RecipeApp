@@ -1,4 +1,4 @@
-package com.example.recipeapp.recipe.favorite
+package com.example.recipeapp.recipe.favorite.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,7 +16,6 @@ import com.example.recipeapp.auth.login.view.userSharedPreferences
 import com.example.recipeapp.recipe.favorite.model.FavoriteDatabase
 import com.example.recipeapp.recipe.favorite.model.FavoriteRepository
 import com.example.recipeapp.recipe.favorite.model.FavoriteViewModelFactory
-import com.example.recipeapp.recipe.favorite.viewModel.FavoriteRecyclerView
 import com.example.recipeapp.recipe.favorite.viewModel.FavoriteViewModel
 import com.example.recipeapp.recipe.mealsOfCategory.view.DetalisFragment
 
@@ -41,7 +40,7 @@ class FavoriteFragment : Fragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val favoriteMeals = FavoriteRecyclerView(getUser(), viewModel, findNavController())
+        val favoriteMeals = FavoriteAdapter(getUser(), viewModel, findNavController())
         recyclerView.adapter = favoriteMeals
 
         viewModel.getMealsFavorite(getUser())

@@ -2,7 +2,7 @@ package com.example.recipeapp.recipe.search.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.recipeapp.recipe.repo.RecipesRepo
+import com.example.recipeapp.recipe.search.model.repo.RecipesRepo
 
 class SearchViewModelFactory(private val repository: RecipesRepo) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

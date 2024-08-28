@@ -1,4 +1,4 @@
-package com.example.recipeapp.recipe.repo
+package com.example.recipeapp.recipe.search.model.repo
 
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
 import com.example.recipeapp.recipe.model.Meal

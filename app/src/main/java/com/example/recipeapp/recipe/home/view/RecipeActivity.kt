@@ -1,4 +1,4 @@
-package com.example.recipeapp.recipe.home
+package com.example.recipeapp.recipe.home.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -34,6 +34,7 @@ class RecipeActivity : AppCompatActivity() {
         val name: String = resources.getString(R.string.app_name)
         supportActionBar?.title = name
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         bottomNav.setOnItemSelectedListener { menuItem ->
             val navController = findNavController(R.id.nav_host_fragment)
@@ -71,14 +72,15 @@ class RecipeActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.option_menu,menu)
+        menuInflater.inflate(R.menu.option_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.about -> {
-                Toast.makeText(this, "about ", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "about ", Toast.LENGTH_SHORT).show()
+                findNavController(R.id.nav_host_fragment).navigate(R.id.aboutFragment)
                 return true
             }
 
@@ -91,9 +93,6 @@ class RecipeActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onNavigateUp(): Boolean {
-        return findNavController(R.id.nav_host_fragment).navigateUp() || super.onNavigateUp()
-    }
 
     override fun onBackPressed() {
         val navController = findNavController(R.id.nav_host_fragment)

@@ -9,23 +9,16 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.recipeapp.R
-import com.example.recipeapp.auth.register.model.UserDatabase
-import com.example.recipeapp.auth.register.model.UserRepository
 import com.example.recipeapp.databinding.FragmentSearchBinding
-import com.example.recipeapp.recipe.detail.viewmodel.RecipeDetailViewModel
-import com.example.recipeapp.recipe.detail.viewmodel.RecipeDetailViewModelFactory
 import com.example.recipeapp.recipe.model.Meal
 import com.example.recipeapp.recipe.network.MealsRequest
-import com.example.recipeapp.recipe.repo.RecipesRepo
-import com.example.recipeapp.recipe.repo.RecipesRepoImpl
-import com.example.recipeapp.recipe.repo.RemoteDataSourceImpl
+import com.example.recipeapp.recipe.search.model.repo.RecipesRepoImpl
+import com.example.recipeapp.recipe.search.model.repo.RemoteDataSourceImpl
 import com.example.recipeapp.recipe.search.viewmodel.SearchViewModel
 import com.example.recipeapp.recipe.search.viewmodel.SearchViewModelFactory
-import kotlinx.coroutines.launch
 
 class SearchFragment : Fragment(), SearchAdapter.OnItemClickListener {
     private lateinit var binding: FragmentSearchBinding

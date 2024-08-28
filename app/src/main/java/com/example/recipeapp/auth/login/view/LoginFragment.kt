@@ -19,7 +19,7 @@ import com.example.recipeapp.auth.login.viewmodel.LoginResult
 import com.example.recipeapp.auth.login.viewmodel.LoginViewModel
 import com.example.recipeapp.auth.register.model.UserDatabase
 import com.example.recipeapp.auth.register.model.UserRepository
-import com.example.recipeapp.recipe.home.RecipeActivity
+import com.example.recipeapp.recipe.home.view.RecipeActivity
 
 class LoginFragment : Fragment() {
 

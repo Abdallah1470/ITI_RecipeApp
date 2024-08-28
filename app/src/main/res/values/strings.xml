@@ -107,9 +107,14 @@
     <string name="description">Description</string>
     <string name="title">Title</string>
     <string name="Register">Register</string>
-    <string name="about">This application features multiple fragments and activities to handle "
-        user authentication, recipe browsing, and favorites management. It includes splash "
-        and login screens, a home page with recipe lists, detailed recipe views, "
-        "and integrated search and favorite functionalities,"
-        all navigated through a bottom navigation component and a local database.</string>
+    <string name="about">"This application features multiple fragments and activities "
+                        "to handle authentication, recipe browsing,and favorites management."
+                        "It includes splash and login screens,a home page with recipe lists,"
+                        "detailed recipe views,and integrated search and favorite functionalities,"
+                        "all navigated through a bottom navigation component and a local database".</string>
+    <string name="mohamed_abdelaziz">"Mohamed Abdelaziz\n"
+                                     "Fresh graduated from computer and information science"
+                                     "Ain shams university\n"
+                                     "Mohamed_elsharkawey@outlook.com"
+    </string>
 </resources>

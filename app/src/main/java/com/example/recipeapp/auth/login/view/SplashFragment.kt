@@ -14,7 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.recipeapp.R
 import com.example.recipeapp.databinding.FragmentSplashBinding
-import com.example.recipeapp.recipe.home.RecipeActivity
+import com.example.recipeapp.recipe.home.view.RecipeActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

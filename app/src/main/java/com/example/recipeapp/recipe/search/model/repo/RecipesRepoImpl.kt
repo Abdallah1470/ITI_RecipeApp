@@ -1,4 +1,4 @@
-package com.example.recipeapp.recipe.repo
+package com.example.recipeapp.recipe.search.model.repo
 
 import android.content.Context
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory

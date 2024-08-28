@@ -1,4 +1,4 @@
-package com.example.recipeapp.recipe.favorite.viewModel
+package com.example.recipeapp.recipe.favorite.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +9,15 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.recipeapp.R
-import com.example.recipeapp.recipe.favorite.FavoriteFragment
-import com.example.recipeapp.recipe.favorite.FavoriteFragmentDirections
-import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
+import com.example.recipeapp.recipe.favorite.viewModel.FavoriteViewModel
 import com.example.recipeapp.recipe.model.Meal
 
-data class FavoriteRecyclerView(
+data class FavoriteAdapter(
     private val userId: Int,
     private val viewModel: FavoriteViewModel,
     private val navController: NavController
 ) :
-RecyclerView.Adapter<FavoriteRecyclerView.MyHolder>() {
+RecyclerView.Adapter<FavoriteAdapter.MyHolder>() {
     private var meals: List<Meal> = emptyList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.meal_row, parent, false)

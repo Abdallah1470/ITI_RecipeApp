@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
 import com.example.recipeapp.recipe.model.Meal
-import com.example.recipeapp.recipe.repo.RecipesRepo
+import com.example.recipeapp.recipe.search.model.repo.RecipesRepo
 import kotlinx.coroutines.launch
 
 class SearchViewModel(private val repository: RecipesRepo) : ViewModel() {

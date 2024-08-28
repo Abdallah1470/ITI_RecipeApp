@@ -1,62 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:backgroundTint="#E6E2E2"
-    android:background="#F4EBEB"
     android:elevation="16dp"
-    android:layout_margin="5dp"
+    android:layout_margin="8dp"
     app:cardCornerRadius="16dp"
-    android:outlineSpotShadowColor="@color/black"
+    android:orientation="vertical"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/xx"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="150dp"
+        android:layout_height="160dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="16dp">
 
-
-        <ImageView
-            android:id="@+id/mealImage"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:background="@drawable/circle_meal"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-        <TextView
-            android:id="@+id/mealName"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/xx"
             android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:padding="4dp"
-            android:gravity="center_horizontal"
-            android:text="Baked salmon with fennel  tomatoes"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/mealImage"
-            app:layout_constraintHorizontal_bias="0.489"
-            app:layout_constraintStart_toStartOf="@+id/mealImage"
-            app:layout_constraintTop_toBottomOf="@+id/mealImage" />
+            android:layout_height="wrap_content">
 
 
-        <ImageView
-            android:id="@+id/mealFavorite"
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="2dp"
-            app:layout_constraintEnd_toEndOf="@+id/xx"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/mealImage"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/heart" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/mealImage"
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:clipToOutline="true"
+                android:foreground="@drawable/image_grdient_background"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-</androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/mealFavorite"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                app:layout_constraintEnd_toEndOf="@+id/xx"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/mealImage"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/favorite_checkbox_background" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/mealName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center_horizontal"
+        android:padding="4dp"
+        android:text="Baked salmon with fennel  tomatoes"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+</LinearLayout>

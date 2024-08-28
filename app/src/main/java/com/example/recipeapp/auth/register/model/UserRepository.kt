@@ -6,7 +6,7 @@ class UserRepository(private val userDao: UserDao) {
     suspend fun insertUser(user: User): Boolean {
         return try {
             val id = userDao.insertUser(user)
-            return id > 0  // Returns true if the user was inserted successfully
+            return id > -1  // Returns true if the user was inserted successfully
         } catch (e: Exception) {
             false
         }

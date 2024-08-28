@@ -1,6 +1,7 @@
 package com.example.recipeapp.recipe.home.view
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -8,6 +9,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.recipeapp.R
 import com.example.recipeapp.auth.login.view.AuthActivity
@@ -29,6 +31,8 @@ class RecipeActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         bottomNav = findViewById(R.id.buttom_navigation)
 
+        bottomNav.background = null
+
         //toolbar
         setSupportActionBar(toolbar)
         val name: String = resources.getString(R.string.app_name)
@@ -38,27 +42,25 @@ class RecipeActivity : AppCompatActivity() {
 
         bottomNav.setOnItemSelectedListener { menuItem ->
             val navController = findNavController(R.id.nav_host_fragment)
+
             when (menuItem.itemId) {
                 R.id.home -> {
                     navController.navigate(R.id.homeFragment)
-                    showToast("Home clicked")
                     true
                 }
 
                 R.id.search -> {
-                    showToast("Search clicked")
                     navController.navigate(R.id.searchFragment)
                     true
                 }
 
                 R.id.favorite -> {
                     navController.navigate(R.id.favoriteFragment2)
-                    showToast("Favorite clicked")
                     true
                 }
 
                 R.id.profile -> {
-                    showToast("Profile clicked")
+                    bottomNav.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
                     true
                 }
 

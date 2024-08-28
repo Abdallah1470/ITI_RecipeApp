@@ -91,12 +91,12 @@ class HomeFragment : Fragment() {
         // Get the Activity Toolbar
         val actionBar = (activity as AppCompatActivity).supportActionBar
 
-        // Hide the back arrow
-        actionBar?.setDisplayHomeAsUpEnabled(false)
-        actionBar?.setDisplayShowHomeEnabled(false)
-
-        actionBar?.title = resources.getString(R.string.app_name)
-
+        actionBar?.apply {
+            setDisplayHomeAsUpEnabled(false)
+            setDisplayShowHomeEnabled(false)
+            title = "Favorite"
+        }
+        actionBar?.hide()
     }
 
     private fun getUser(): Int {

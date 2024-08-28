@@ -34,7 +34,7 @@ RecyclerView.Adapter<FavoriteAdapter.MyHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        holder.removeFromFavorite.setImageResource(R.drawable.lover)
+        holder.removeFromFavorite.setImageResource(R.drawable.ic_favorite_filled)
         if (meals.isNotEmpty()) {
             val imageUrl = meals[position].strMealThumb
             if (imageUrl != null) {

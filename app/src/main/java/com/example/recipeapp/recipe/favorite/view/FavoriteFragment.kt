@@ -63,14 +63,12 @@ class FavoriteFragment : Fragment() {
 
         // Get the Activity Toolbar
         val actionBar = (activity as? AppCompatActivity)?.supportActionBar
-
+        actionBar?.show()
         // Configure the ActionBar if it exists
         actionBar?.apply {
-            setDisplayHomeAsUpEnabled(true)
-            setDisplayShowHomeEnabled(true)
+            setDisplayHomeAsUpEnabled(false)
+            setDisplayShowHomeEnabled(false)
             title = "Favorite"
-            setHomeButtonEnabled(true)
-            setDisplayHomeAsUpEnabled(true)
         }
     }
 

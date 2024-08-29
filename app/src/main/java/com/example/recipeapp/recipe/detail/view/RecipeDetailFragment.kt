@@ -61,12 +61,21 @@ class RecipeDetailFragment : Fragment() {
             }
         }
 
+        viewModel.isFavorite.observe(viewLifecycleOwner){
+            binding.favoritesCheckbox.isChecked = it
+        }
+
+        binding.favoritesCheckbox.apply {
+            lifecycleScope.launch {
+                viewModel.updateFavoriteStatus(isChecked,getUser(),args.recipeId)
+            }
+        }
         binding.favoritesCheckbox.apply {
             lifecycleScope.launch {
                 viewModel.inFavorites(
                     getUser(),
                     args.recipeId
-                ) // Replace `userId = 1` with actual user ID
+                )
                 isChecked = viewModel.isFavorite.value ?: false
             }
             setOnCheckedChangeListener { button, isChecked ->

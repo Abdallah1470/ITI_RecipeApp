@@ -23,4 +23,27 @@ interface UserDao {
     @Update
     suspend fun updateUser(user: User)
 
+    // change password
+    @Query("UPDATE user SET password = :newPassword WHERE id = :id")
+    suspend fun changePassword(id: Long, newPassword: String)
+
+    // change email
+    @Query("UPDATE user SET email = :newEmail WHERE id = :id")
+    suspend fun changeEmail(id: Long, newEmail: String)
+
+    // change username
+    @Query("UPDATE user SET name = :newUsername WHERE id = :id")
+    suspend fun changeUsername(id: Long, newUsername: String)
+
+    // change profile picture
+    @Query("UPDATE user SET profilePicture = :newProfilePicture WHERE id = :id")
+    suspend fun changeProfilePicture(id: Long, newProfilePicture: Int)
+
+    // get profile image
+    @Query("SELECT profilePicture FROM user WHERE id = :id")
+    suspend fun getProfileImage(id: Long): Int
+
+    // Delete user
+    @Query("DELETE FROM user WHERE id = :id")
+    suspend fun deleteUser(id: Long)
 }

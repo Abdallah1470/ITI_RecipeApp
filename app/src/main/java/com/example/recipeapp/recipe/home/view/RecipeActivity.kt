@@ -58,6 +58,7 @@ class RecipeActivity : AppCompatActivity() {
                 }
 
                 R.id.profile -> {
+                    navController.navigate(R.id.profileFragment)
                     showToast("Profile clicked")
                     true
                 }

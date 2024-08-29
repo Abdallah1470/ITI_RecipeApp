@@ -10,4 +10,6 @@
     <color name="slate900">#0F172A</color>
     <color name="slate500">#64748B</color>
     <color name="slate400">#94A3B8</color>
+    <color name="red">#FF0000</color>
+
 </resources>

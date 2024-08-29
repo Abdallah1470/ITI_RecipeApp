@@ -117,4 +117,187 @@
                                      "Ain shams university\n"
                                      "Mohamed_elsharkawey@outlook.com"
     </string>
+    <string name="terms_of_service_title">Terms of Service</string>
+    <string name="terms_of_service_last_updated">Last Updated: August 28, 2024</string>
+    <string name="terms_of_service_intro">
+        Welcome to Recipe App ("we", "our", or "us"). These Terms of Service ("Terms") govern your access to and use of our mobile application ("App") and related services (collectively, the "Service"). By using our Service, you agree to be bound by these Terms. If you do not agree to these Terms, please do not use the Service.
+    </string>
+
+    <string name="terms_of_service_acceptance_title">1. Acceptance of Terms</string>
+    <string name="terms_of_service_acceptance_body">
+        By accessing or using our Service, you agree to comply with and be bound by these Terms and any applicable laws and regulations. If you do not agree with any part of these Terms, you must discontinue use of our Service immediately.
+    </string>
+
+    <string name="terms_of_service_use_of_service_title">2. Use of the Service</string>
+    <string name="terms_of_service_use_of_service_body">
+        &#8226; Eligibility: You must be at least 13 years old to use our Service. By using the Service, you represent and warrant that you meet this eligibility requirement.
+
+        &#8226; Account Registration: To access certain features of the Service, you may be required to register for an account. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.
+
+        &#8226; User Conduct: You agree not to use the Service for any unlawful or prohibited purpose, including but not limited to:
+
+        &#160;&#160;&#160;&#160;- Posting or sharing any content that is illegal, harmful, or offensive.
+
+        &#160;&#160;&#160;&#160;- Interfering with the operation of the Service or the servers or networks used to provide the Service.
+
+        &#160;&#160;&#160;&#160;- Attempting to gain unauthorized access to any portion of the Service or any other systems or networks connected to the Service.
+    </string>
+
+    <string name="terms_of_service_user_content_title">3. User Content</string>
+    <string name="terms_of_service_user_content_body">
+        &#8226; Ownership: You retain ownership of any content you submit, post, or display on or through the Service ("User Content"). By submitting User Content, you grant us a non-exclusive, worldwide, royalty-free, sublicensable, and transferable license to use, reproduce, distribute, prepare derivative works of, display, and perform the User Content in connection with the Service.
+
+        &#8226; Responsibility: You are solely responsible for the User Content you submit, and you represent and warrant that you have all necessary rights to grant us the license described above.
+    </string>
+
+    <string name="terms_of_service_intellectual_property_title">4. Intellectual Property</string>
+    <string name="terms_of_service_intellectual_property_body">
+        All intellectual property rights in and to the Service, including but not limited to software, design, text, images, and trademarks, are owned by or licensed to us. You may not use, copy, modify, or distribute any part of the Service without our prior written consent.
+    </string>
+
+    <string name="terms_of_service_privacy_policy_title">5. Privacy Policy</string>
+    <string name="terms_of_service_privacy_policy_body">
+        Your privacy is important to us. Our Privacy Policy explains how we collect, use, and share your personal information. By using the Service, you consent to our collection and use of your personal information as outlined in our Privacy Policy.
+    </string>
+
+    <string name="terms_of_service_termination_title">6. Termination</string>
+    <string name="terms_of_service_termination_body">
+        We reserve the right to terminate or suspend your access to the Service at any time, with or without notice, for any reason, including if you breach these Terms. Upon termination, your right to use the Service will immediately cease.
+    </string>
+
+    <string name="terms_of_service_disclaimers_title">7. Disclaimers</string>
+    <string name="terms_of_service_disclaimers_body">
+        &#8226; No Warranty: The Service is provided on an "as is" and "as available" basis without any warranties of any kind, whether express or implied. We do not guarantee that the Service will be uninterrupted, error-free, or free of viruses or other harmful components.
+
+        &#8226; Limitation of Liability: To the fullest extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising out of or related to your use of the Service.
+    </string>
+
+    <string name="terms_of_service_changes_title">8. Changes to the Terms</string>
+    <string name="terms_of_service_changes_body">
+        We may modify these Terms at any time. If we make material changes, we will provide notice through the Service or by other means. Your continued use of the Service after the changes become effective constitutes your acceptance of the new Terms.
+    </string>
+
+    <string name="terms_of_service_governing_law_title">9. Governing Law</string>
+    <string name="terms_of_service_governing_law_body">
+        These Terms shall be governed by and construed in accordance with the laws of Egypt, without regard to its conflict of law principles.
+    </string>
+
+    <string name="terms_of_service_contact_title">10. Contact Us</string>
+    <string name="terms_of_service_contact_body">
+        If you have any questions or concerns about these Terms, please contact us at support@recipeapp.com.
+    </string>
+
+    <!-- Privacy Policy Title -->
+    <string name="privacy_policy_title">Privacy Policy</string>
+
+    <!-- Last Updated -->
+    <string name="privacy_policy_last_updated">Last Updated: August 28, 2024</string>
+
+    <!-- Introduction -->
+    <string name="privacy_policy_intro">
+        RecipeMaster ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application ("App") and related services (collectively, the "Service"). By using our Service, you consent to the practices described in this policy.
+    </string>
+
+    <!-- Information We Collect -->
+    <string name="privacy_policy_information_we_collect_title">1. Information We Collect</string>
+    <string name="privacy_policy_information_we_collect_body">
+        <b>1.1 Personal Information</b>
+        <ul>
+            <li><b>Account Information:</b> When you create an account, we may collect personal information such as your name, email address, and password.</li>
+            <li><b>Profile Information:</b> If you choose to provide additional information to complete your profile, such as a profile picture, we collect that information.</li>
+        </ul>
+        <b>1.2 Usage Data</b>
+        <ul>
+            <li><b>Log Data:</b> We automatically collect information about your interactions with our Service, including IP address, device information, operating system, browser type, and access times.</li>
+            <li><b>Cookies:</b> We use cookies and similar technologies to track activity and preferences on our Service. You can manage your cookie preferences through your browser settings.</li>
+        </ul>
+        <b>1.3 Location Data</b>
+        <ul>
+            <li><b>Geolocation:</b> If you enable location services, we may collect information about your geographical location.</li>
+        </ul>
+    </string>
+
+    <!-- How We Use Your Information -->
+    <string name="privacy_policy_how_we_use_your_information_title">2. How We Use Your Information</string>
+    <string name="privacy_policy_how_we_use_your_information_body">
+        <b>2.1 To Provide and Improve Our Service</b>
+        <ul>
+            <li><b>Account Management:</b> To create and manage your account, personalize your experience, and provide customer support.</li>
+            <li><b>Service Improvement:</b> To analyze usage data, enhance our Service, and develop new features.</li>
+        </ul>
+        <b>2.2 For Communication</b>
+        <ul>
+            <li><b>Notifications:</b> To send you updates, newsletters, and other information related to our Service.</li>
+            <li><b>Customer Support:</b> To respond to your inquiries and provide support.</li>
+        </ul>
+        <b>2.3 For Advertising and Analytics</b>
+        <ul>
+            <li><b>Personalized Ads:</b> To deliver targeted advertisements and measure the effectiveness of our marketing campaigns.</li>
+            <li><b>Analytics:</b> To analyze and understand how users interact with our Service.</li>
+        </ul>
+    </string>
+
+    <!-- How We Share Your Information -->
+    <string name="privacy_policy_how_we_share_your_information_title">3. How We Share Your Information</string>
+    <string name="privacy_policy_how_we_share_your_information_body">
+        <b>3.1 With Third-Party Service Providers</b>
+        <ul>
+            <li>We may share your information with third-party service providers who perform services on our behalf, such as hosting, payment processing, and data analysis.</li>
+        </ul>
+        <b>3.2 For Legal Reasons</b>
+        <ul>
+            <li>We may disclose your information to comply with legal obligations, enforce our Terms of Service, or protect the rights, property, or safety of our users or others.</li>
+        </ul>
+        <b>3.3 Business Transfers</b>
+        <ul>
+            <li>In the event of a merger, acquisition, or other business reorganization, your information may be transferred as part of the transaction.</li>
+        </ul>
+    </string>
+
+    <!-- Data Security -->
+    <string name="privacy_policy_data_security_title">4. Data Security</string>
+    <string name="privacy_policy_data_security_body">
+        We take reasonable measures to protect your information from unauthorized access, use, or disclosure. However, no security system is impenetrable, and we cannot guarantee the absolute security of your information.
+    </string>
+
+    <!-- Your Rights and Choices -->
+    <string name="privacy_policy_your_rights_and_choices_title">5. Your Rights and Choices</string>
+    <string name="privacy_policy_your_rights_and_choices_body">
+        <b>5.1 Access and Update</b>
+        <ul>
+            <li>You can access and update your personal information through your account settings or by contacting us.</li>
+        </ul>
+        <b>5.2 Opt-Out</b>
+        <ul>
+            <li>You can opt out of receiving promotional emails by following the unsubscribe instructions in those emails.</li>
+        </ul>
+        <b>5.3 Cookies</b>
+        <ul>
+            <li>You can manage your cookie preferences through your browser settings. Note that disabling cookies may affect the functionality of our Service.</li>
+        </ul>
+    </string>
+
+    <!-- Children’s Privacy -->
+    <string name="privacy_policy_childrens_privacy_title">6. Children’s Privacy</string>
+    <string name="privacy_policy_childrens_privacy_body">
+        Our Service is not intended for use by individuals under the age of 13. We do not knowingly collect personal information from children under 13. If we become aware that we have collected such information, we will take steps to delete it.
+    </string>
+
+    <!-- Changes to This Privacy Policy -->
+    <string name="privacy_policy_changes_title">7. Changes to This Privacy Policy</string>
+    <string name="privacy_policy_changes_body">
+        We may update this Privacy Policy from time to time. We will notify you of any material changes by posting the new policy on our Service. Your continued use of our Service after the changes become effective constitutes your acceptance of the updated policy.
+    </string>
+
+    <!-- Contact Us -->
+    <string name="privacy_policy_contact_title">8. Contact Us</string>
+    <string name="privacy_policy_contact_body">
+        If you have any questions or concerns about this Privacy Policy, please contact us at <a href="mailto:support@recipemaster.com">abdllahamin14700@gmail.com</a>.
+    </string>
+    <string name="contact_us_title">Contact Us</string>
+    <string name="contact_us_body">
+        If you have any questions or concerns about this Privacy Policy or our practices, please contact us at:
+        <br />
+        <a href="mailto:support@recipemaster.com">abdllahamin14700@gmail.com</a>
+    </string>
 </resources>

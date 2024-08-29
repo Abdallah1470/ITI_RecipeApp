@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/terms_of_service_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:paddingBottom="16dp" />
+
+        <!-- Last Updated -->
+        <TextView
+            android:id="@+id/terms_of_service_last_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_last_updated"
+            android:textStyle="italic"
+            android:paddingBottom="24dp" />
+
+        <!-- Intro -->
+        <TextView
+            android:id="@+id/terms_of_service_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_intro"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 1: Acceptance of Terms -->
+        <TextView
+            android:id="@+id/terms_of_service_acceptance_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_acceptance_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_acceptance_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_acceptance_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 2: Use of the Service -->
+        <TextView
+            android:id="@+id/terms_of_service_use_of_service_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_use_of_service_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_use_of_service_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_use_of_service_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 3: User Content -->
+        <TextView
+            android:id="@+id/terms_of_service_user_content_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_user_content_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_user_content_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_user_content_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 4: Intellectual Property -->
+        <TextView
+            android:id="@+id/terms_of_service_intellectual_property_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_intellectual_property_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_intellectual_property_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_intellectual_property_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 5: Privacy Policy -->
+        <TextView
+            android:id="@+id/terms_of_service_privacy_policy_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_privacy_policy_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_privacy_policy_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_privacy_policy_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 6: Termination -->
+        <TextView
+            android:id="@+id/terms_of_service_termination_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_termination_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_termination_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_termination_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 7: Disclaimers -->
+        <TextView
+            android:id="@+id/terms_of_service_disclaimers_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_disclaimers_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_disclaimers_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_disclaimers_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 8: Changes to the Terms -->
+        <TextView
+            android:id="@+id/terms_of_service_changes_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_changes_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_changes_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_changes_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 9: Governing Law -->
+        <TextView
+            android:id="@+id/terms_of_service_governing_law_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_governing_law_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_governing_law_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_governing_law_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 10: Contact Us -->
+        <TextView
+            android:id="@+id/terms_of_service_contact_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_contact_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/terms_of_service_contact_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_of_service_contact_body"
+            android:paddingBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>

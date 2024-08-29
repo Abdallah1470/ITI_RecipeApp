@@ -56,7 +56,7 @@ class RecipeActivity : AppCompatActivity() {
                 }
 
                 R.id.profile -> {
-                    bottomNav.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
+                    navController.navigate(R.id.profileFragment)
                     true
                 }
 

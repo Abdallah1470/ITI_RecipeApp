@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -19,9 +20,12 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 const val PREF_NAME = "myPreferences"
+const val SETTINGS_PREF = "settings"
 const val USER_ID = "id"
 const val IS_LOGIN = "logged"
+const val IS_DARK_MODE = "logged"
 lateinit var userSharedPreferences: SharedPreferences
+lateinit var settingsSharedPreferences: SharedPreferences
 
 class SplashFragment : Fragment() {
     private lateinit var binding: FragmentSplashBinding
@@ -29,6 +33,11 @@ class SplashFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+        settingsSharedPreferences = requireContext().getSharedPreferences(SETTINGS_PREF, Context.MODE_PRIVATE)
+        AppCompatDelegate.setDefaultNightMode(
+            if (settingsSharedPreferences.getBoolean(IS_DARK_MODE, false)) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false)
         userSharedPreferences = (context?.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
             ?: 0) as SharedPreferences

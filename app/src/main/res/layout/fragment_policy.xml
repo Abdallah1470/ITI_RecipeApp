@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Privacy Policy Title -->
+        <TextView
+            android:id="@+id/privacy_policy_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_title"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:paddingBottom="16dp" />
+
+        <!-- Last Updated -->
+        <TextView
+            android:id="@+id/privacy_policy_last_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_last_updated"
+            android:textStyle="italic"
+            android:paddingBottom="24dp" />
+
+        <!-- Introduction -->
+        <TextView
+            android:id="@+id/privacy_policy_intro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_intro"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 1: Information We Collect -->
+        <TextView
+            android:id="@+id/privacy_policy_information_we_collect_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_information_we_collect_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/privacy_policy_information_we_collect_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_information_we_collect_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 2: How We Use Your Information -->
+        <TextView
+            android:id="@+id/privacy_policy_how_we_use_your_information_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_how_we_use_your_information_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/privacy_policy_how_we_use_your_information_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_how_we_use_your_information_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 3: How We Share Your Information -->
+        <TextView
+            android:id="@+id/privacy_policy_how_we_share_your_information_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_how_we_share_your_information_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/privacy_policy_how_we_share_your_information_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_how_we_share_your_information_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 4: Data Security -->
+        <TextView
+            android:id="@+id/privacy_policy_data_security_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_data_security_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/privacy_policy_data_security_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_data_security_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 5: Your Rights and Choices -->
+        <TextView
+            android:id="@+id/privacy_policy_your_rights_and_choices_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_your_rights_and_choices_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/privacy_policy_your_rights_and_choices_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_your_rights_and_choices_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 6: Children’s Privacy -->
+        <TextView
+            android:id="@+id/privacy_policy_childrens_privacy_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_childrens_privacy_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/privacy_policy_childrens_privacy_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_childrens_privacy_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 7: Changes to This Privacy Policy -->
+        <TextView
+            android:id="@+id/privacy_policy_changes_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_changes_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/privacy_policy_changes_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_changes_body"
+            android:paddingBottom="16dp" />
+
+        <!-- Section 8: Contact Us -->
+        <TextView
+            android:id="@+id/privacy_policy_contact_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_contact_title"
+            android:textStyle="bold"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/privacy_policy_contact_body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/privacy_policy_contact_body"
+            android:paddingBottom="16dp" />
+
+    </LinearLayout>
+</ScrollView>

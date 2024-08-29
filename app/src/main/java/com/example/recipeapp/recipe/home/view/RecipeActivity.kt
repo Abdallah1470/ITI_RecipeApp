@@ -1,6 +1,7 @@
 package com.example.recipeapp.recipe.home.view
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -8,6 +9,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import com.example.recipeapp.R
 import com.example.recipeapp.auth.login.view.AuthActivity
@@ -31,45 +33,36 @@ class RecipeActivity : AppCompatActivity() {
 
         //toolbar
         setSupportActionBar(toolbar)
-        val name: String = resources.getString(R.string.app_name)
-        supportActionBar?.title = name
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         bottomNav.setOnItemSelectedListener { menuItem ->
             val navController = findNavController(R.id.nav_host_fragment)
+
             when (menuItem.itemId) {
                 R.id.home -> {
                     navController.navigate(R.id.homeFragment)
-                    showToast("Home clicked")
                     true
                 }
 
                 R.id.search -> {
-                    showToast("Search clicked")
                     navController.navigate(R.id.searchFragment)
                     true
                 }
 
                 R.id.favorite -> {
                     navController.navigate(R.id.favoriteFragment2)
-                    showToast("Favorite clicked")
                     true
                 }
 
                 R.id.profile -> {
                     navController.navigate(R.id.profileFragment)
-                    showToast("Profile clicked")
                     true
                 }
 
                 else -> false
             }
         }
-    }
-
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -80,7 +73,6 @@ class RecipeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.about -> {
-                Toast.makeText(this, "about ", Toast.LENGTH_SHORT).show()
                 findNavController(R.id.nav_host_fragment).navigate(R.id.aboutFragment)
                 return true
             }
@@ -93,13 +85,4 @@ class RecipeActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
-    override fun onBackPressed() {
-        val navController = findNavController(R.id.nav_host_fragment)
-        if (!navController.popBackStack()) {
-            super.onBackPressed()
-        }
-    }
-
 }

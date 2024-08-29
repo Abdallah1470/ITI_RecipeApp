@@ -21,9 +21,19 @@ class FavoriteViewModel(private val repository: FavoriteRepository) : ViewModel(
         }
     }
 
+
     fun deleteFromFavorite(meal: Meal, userId: Int) {
         viewModelScope.launch {
+            // Remove meal from favorites in the repository
             repository.removeMealFromFavorites(userId, meal)
+
+            // Update the list of favorite meals in the ViewModel after deletion
+            val currentList = _favoriteResultMutableLiveData.value
+            currentList?.let { list ->
+                val updatedList = list.toMutableList()
+                updatedList.remove(meal)
+                _favoriteResultMutableLiveData.postValue(updatedList)
+            }
         }
     }
 }

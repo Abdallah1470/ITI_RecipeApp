@@ -1,25 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="light_blue_600">#FF039BE5</color>
-    <color name="light_blue_900">#FF01579B</color>
-    <color name="light_blue_A200">#FF40C4FF</color>
-    <color name="light_blue_A400">#FF00B0FF</color>
-    <color name="black_overlay">#66000000</color>
-    <color name="slate900">#0F172A</color>
-    <color name="slate500">#64748B</color>
-    <color name="slate400">#94A3B8</color>
     <color name="purple_200">#010002</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="inactive">#C4C4C4</color>
     <color name="active">#50C2C9</color>
     <color name="blue">#0F3B95</color>
     <color name="red">#FFFF0000</color>
-    <color name="green">#077A07</color>
+    <color name="green">#FF00FF00</color>
     <color name="yellow">#FFFFFF00</color>
     <color name="orange">#FFFFA500</color>
     <color name="purple">#FF800080</color>
@@ -29,4 +21,5 @@
     <color name="gray">#FF808080</color>
     <color name="light_gray">#F6F5F5</color>
     <color name="dark_gray">#FFA9A9A9</color>
+
 </resources>

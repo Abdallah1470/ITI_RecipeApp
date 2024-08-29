@@ -66,9 +66,7 @@ class DetalisFragment : Fragment() {
         // Get the Activity Toolbar
         val actionBar = (activity as AppCompatActivity).supportActionBar
 
-        // show the back arrow
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setDisplayShowHomeEnabled(true)
+        actionBar?.show()
 
         // title for this fragment
         actionBar?.title = args.categoryName

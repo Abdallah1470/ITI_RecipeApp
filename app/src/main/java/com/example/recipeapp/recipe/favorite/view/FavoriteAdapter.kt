@@ -34,7 +34,7 @@ RecyclerView.Adapter<FavoriteAdapter.MyHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        holder.removeFromFavorite.setImageResource(R.drawable.lover)
+        holder.removeFromFavorite.setImageResource(R.drawable.ic_favorite_filled)
         if (meals.isNotEmpty()) {
             val imageUrl = meals[position].strMealThumb
             if (imageUrl != null) {
@@ -45,7 +45,7 @@ RecyclerView.Adapter<FavoriteAdapter.MyHolder>() {
 
             holder.removeFromFavorite.setOnClickListener {
                 holder.removeFromFavorite.setImageResource(R.drawable.heart)
-                viewModel.deleteFromFavorite(meals[position],userId)
+                viewModel.deleteFromFavorite(meals[position], userId)
                 notifyItemRemoved(position)
             }
             holder.itemView.setOnClickListener {

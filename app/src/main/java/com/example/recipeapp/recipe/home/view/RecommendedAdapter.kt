@@ -18,7 +18,10 @@ import com.example.recipeapp.recipe.model.Meal
 
 private var isChecked: Boolean = false
 
-class RecommendedAdapter(private val navController: NavController, private val viewModel: HomeViewModel,private val userID:Int
+class RecommendedAdapter(
+    private val navController: NavController,
+    private val viewModel: HomeViewModel,
+    private val userID: Int
 ) :
     RecyclerView.Adapter<RecommendedAdapter.MyHolder>() {
 
@@ -48,7 +51,7 @@ class RecommendedAdapter(private val navController: NavController, private val v
             holder.addToFavorite.setOnClickListener {
                 isChecked = !isChecked
                 if (isChecked) {
-                    holder.addToFavorite.setImageResource(R.drawable.lover)
+                    holder.addToFavorite.setImageResource(R.drawable.ic_favorite_filled)
                     viewModel.insertToFavorite(meals[position], userID)
                 } else {
                     holder.addToFavorite.setImageResource(R.drawable.heart)
@@ -57,7 +60,6 @@ class RecommendedAdapter(private val navController: NavController, private val v
 
             }
             holder.itemView.setOnClickListener {
-                Log.d("Meal", "Meal id = ${meals[position].idMeal}")
                 val action =
                     HomeFragmentDirections.actionHomeFragmentToRecipeDetailFragment((meals[position].idMeal))
                 navController.navigate(action)

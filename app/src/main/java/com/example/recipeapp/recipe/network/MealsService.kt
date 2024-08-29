@@ -9,7 +9,7 @@ import com.example.recipeapp.recipe.model.CategoryMeals
 import com.example.recipeapp.recipe.model.IngredientsListResponse
 import com.example.recipeapp.recipe.model.MainIngredientMeals
 import com.example.recipeapp.recipe.model.MealsResponse
-import com.example.recipeapp.recipe.model.Search
+import com.example.recipeapp.recipe.search.model.Search
 import retrofit2.http.GET
 import retrofit2.http.Query
 

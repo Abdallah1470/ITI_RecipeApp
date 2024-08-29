@@ -1,10 +1,8 @@
-package com.example.recipeapp.auth.login
+package com.example.recipeapp.auth.login.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.recipeapp.auth.login.viewmodel.LoginViewModel
 import com.example.recipeapp.auth.register.model.UserRepository
-import com.example.recipeapp.auth.register.viewmodel.RegisterViewModel
 
 class LoginViewModelFactory( private val repository: UserRepository ): ViewModelProvider.Factory {
 

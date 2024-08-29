@@ -1,5 +1,6 @@
 package com.example.recipeapp.recipe.detail.view
 
+import android.graphics.drawable.Drawable
 import com.example.recipeapp.recipe.detail.viewmodel.RecipeDetailViewModelFactory
 import androidx.fragment.app.viewModels
 import android.os.Bundle
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -16,10 +18,10 @@ import com.bumptech.glide.Glide
 import com.example.recipeapp.R
 import com.example.recipeapp.auth.login.view.USER_ID
 import com.example.recipeapp.auth.login.view.userSharedPreferences
-import com.example.recipeapp.auth.register.model.UserDatabase
-import com.example.recipeapp.auth.register.model.UserRepository
 import com.example.recipeapp.databinding.FragmentRecipeDetailBinding
 import com.example.recipeapp.recipe.detail.viewmodel.RecipeDetailViewModel
+import com.example.recipeapp.recipe.favorite.model.FavoriteDatabase
+import com.example.recipeapp.recipe.favorite.model.FavoriteRepository
 import kotlinx.coroutines.launch
 
 class RecipeDetailFragment : Fragment() {
@@ -27,8 +29,8 @@ class RecipeDetailFragment : Fragment() {
     private lateinit var binding: FragmentRecipeDetailBinding
 
     private val viewModel: RecipeDetailViewModel by viewModels {
-        val userDao = UserDatabase.getInstance(requireContext()).userDao()
-        RecipeDetailViewModelFactory(UserRepository(userDao))
+        val userDao = FavoriteDatabase.getInstance(requireContext()).favoriteDao()
+        RecipeDetailViewModelFactory(FavoriteRepository(userDao))
     }
 
     override fun onCreateView(
@@ -60,17 +62,17 @@ class RecipeDetailFragment : Fragment() {
         }
 
         binding.favoritesCheckbox.apply {
-            setOnCheckedChangeListener { button, isChecked ->
-                viewModel.updateFavoriteStatus(
-                    isChecked, getUser().toLong(), recipeId = args.recipeId
-                ) // Replace `userId = 1` with actual user ID
-            }
             lifecycleScope.launch {
                 viewModel.inFavorites(
-                    getUser().toLong(),
-                    recipeId = args.recipeId
+                    getUser(),
+                    args.recipeId
                 ) // Replace `userId = 1` with actual user ID
                 isChecked = viewModel.isFavorite.value ?: false
+            }
+            setOnCheckedChangeListener { button, isChecked ->
+                viewModel.updateFavoriteStatus(
+                    isChecked, getUser(),args.recipeId
+                )
             }
         }
 
@@ -101,7 +103,20 @@ class RecipeDetailFragment : Fragment() {
             loadUrl(url)
         }
     }
+
     private fun getUser(): Int {
         return userSharedPreferences.getLong(USER_ID,-1).toInt()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Get the Activity Toolbar
+        val actionBar = (activity as? AppCompatActivity)?.supportActionBar
+        actionBar?.hide()
+        // Configure the ActionBar if it exists
+        actionBar?.apply {
+            title = "About"
+        }
+
     }
 }

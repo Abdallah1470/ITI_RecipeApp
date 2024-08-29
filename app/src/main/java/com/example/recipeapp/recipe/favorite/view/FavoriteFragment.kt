@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -57,17 +58,17 @@ class FavoriteFragment : Fragment() {
     }
 
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         // Get the Activity Toolbar
-        val actionBar = (activity as AppCompatActivity).supportActionBar
-
-        // show the back arrow
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setDisplayShowHomeEnabled(true)
-
-        // Optional: Set a different title for this fragment
-        actionBar?.title = "Favorite"
+        val actionBar = (activity as? AppCompatActivity)?.supportActionBar
+        actionBar?.show()
+        // Configure the ActionBar if it exists
+        actionBar?.apply {
+            setDisplayHomeAsUpEnabled(false)
+            setDisplayShowHomeEnabled(false)
+            title = "Favorite"
+        }
     }
 
     private fun getUser(): Int {

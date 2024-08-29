@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.example.recipeapp.R
 
 
@@ -22,5 +23,16 @@ class AboutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Get the Activity Toolbar
+        val actionBar = (activity as? AppCompatActivity)?.supportActionBar
+        actionBar?.show()
+        // Configure the ActionBar if it exists
+        actionBar?.apply {
+            title = "About"
+        }
     }
 }

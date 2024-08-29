@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.recipeapp.R
-import com.example.recipeapp.auth.login.LoginViewModelFactory
+import com.example.recipeapp.auth.login.viewmodel.LoginViewModelFactory
 import com.example.recipeapp.auth.login.viewmodel.LoginNavigation
 import com.example.recipeapp.auth.login.viewmodel.LoginResult
 import com.example.recipeapp.auth.login.viewmodel.LoginViewModel
@@ -39,14 +39,11 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
-        email = view.findViewById(R.id.input_field_email)
-        password = view.findViewById(R.id.input_password)
-        loginButton = view.findViewById(R.id.button_login)
-        registerTextView = view.findViewById(R.id.go_to_sign_up)
-
+        initializeView(view)
 
         return view
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -90,6 +87,13 @@ class LoginFragment : Fragment() {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
 
+    }
+
+    private fun initializeView(view: View) {
+        email = view.findViewById(R.id.input_field_email)
+        password = view.findViewById(R.id.input_password)
+        loginButton = view.findViewById(R.id.button_login)
+        registerTextView = view.findViewById(R.id.go_to_sign_up)
     }
 
     // check input data before Register

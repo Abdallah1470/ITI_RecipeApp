@@ -6,10 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.recipeapp.recipe.favorite.model.Favorite
 import com.example.recipeapp.recipe.favorite.model.FavoriteRepository
-import com.example.recipeapp.recipe.mealsOfCategory.model.MealsOfCategory
-import com.example.recipeapp.recipe.model.CategoryMeals
 import com.example.recipeapp.recipe.model.Meal
 import kotlinx.coroutines.launch
 

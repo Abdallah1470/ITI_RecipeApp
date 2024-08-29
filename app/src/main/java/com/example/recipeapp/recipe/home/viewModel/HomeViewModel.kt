@@ -59,7 +59,4 @@ class HomeViewModel(private val repository: CategoryRepositoryImpl,private val f
             favoriteRepository.removeMealFromFavorites(id,meal)
         }
     }
-
-
-
 }

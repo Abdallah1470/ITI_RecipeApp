@@ -3,6 +3,7 @@
     <style name="Base.Theme.RecipeApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/black</item>
+
     </style>
 
     <style name="buttonAppbar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -15,5 +16,6 @@
     <style name="ThemeOverlay.RecipeApp.FullscreenContainer" parent="">
         <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
         <item name="fullscreenTextColor">@color/light_blue_A200</item>
+
     </style>
 </resources>

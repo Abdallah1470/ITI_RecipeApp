@@ -3,26 +3,20 @@ package com.example.recipeapp.recipe.profile.viewmodel
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.recipeapp.auth.register.model.UserRepository
-import com.example.recipeapp.recipe.model.Meal
-import kotlinx.coroutines.launch
-
-class ProfileViewModel(
-    private val repository: UserRepository
-) : ViewModel() {
-    private val _profileImage = MutableLiveData<Int>()
-    val profileImage: LiveData<Int> = _profileImage
 import androidx.lifecycle.viewModelScope
 import com.example.recipeapp.auth.login.view.USER_ID
 import com.example.recipeapp.auth.login.view.userSharedPreferences
 import com.example.recipeapp.auth.register.model.User
 import com.example.recipeapp.auth.register.model.UserRepository
+import com.example.recipeapp.recipe.model.Meal
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
+    private val _profileImage = MutableLiveData<Int>()
+    val profileImage: LiveData<Int> = _profileImage
+
+
     private val _userLiveData = MutableLiveData<User>()
     val userData: MutableLiveData<User> get() = _userLiveData
 

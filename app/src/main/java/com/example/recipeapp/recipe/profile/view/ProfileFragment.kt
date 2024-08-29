@@ -27,11 +27,8 @@ import com.example.recipeapp.auth.login.view.userSharedPreferences
 import com.example.recipeapp.auth.register.model.UserDatabase
 import com.example.recipeapp.auth.register.model.UserRepository
 import com.example.recipeapp.auth.register.model.User
-import com.example.recipeapp.auth.register.model.UserDatabase
-import com.example.recipeapp.auth.register.model.UserRepository
 import com.example.recipeapp.databinding.FragmentProfileBinding
 import com.example.recipeapp.recipe.profile.viewmodel.ProfileViewModel
-import com.example.recipeapp.recipe.profile.viewmodel.ProfileViewModelFactory
 import com.example.recipeapp.recipe.profile.viewmodel.ProfileViewModelFactory
 import kotlinx.coroutines.launch
 
@@ -40,9 +37,7 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var repository: UserRepository
     private lateinit var user: User
-    private val viewModel: ProfileViewModel by viewModels {
-        ProfileViewModelFactory(repository)
-    }
+
     private val viewModel: ProfileViewModel by viewModels{
         ProfileViewModelFactory(
             UserRepository(

@@ -33,9 +33,14 @@ class SplashFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        settingsSharedPreferences = requireContext().getSharedPreferences(SETTINGS_PREF, Context.MODE_PRIVATE)
+        settingsSharedPreferences =
+            requireContext().getSharedPreferences(SETTINGS_PREF, Context.MODE_PRIVATE)
         AppCompatDelegate.setDefaultNightMode(
-            if (settingsSharedPreferences.getBoolean(IS_DARK_MODE, false)) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            if (settingsSharedPreferences.getBoolean(
+                    IS_DARK_MODE,
+                    false
+                )
+            ) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
         )
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false)

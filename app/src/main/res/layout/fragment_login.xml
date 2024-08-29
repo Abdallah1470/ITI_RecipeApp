@@ -36,14 +36,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:backgroundTint="@color/white"
             android:layout_marginVertical="30dp"
+
+            app:hintTextColor="?attr/colorBackgroundFloating"
+            android:backgroundTint="?colorBackgroundFloating"
+            app:boxStrokeColor="?attr/colorBackgroundFloating"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_field_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="?attr/colorBackgroundFloating"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -52,14 +57,16 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             app:endIconMode="password_toggle"
-            android:backgroundTint="@color/white"
-            >
+            app:hintTextColor="?attr/colorBackgroundFloating"
+            android:backgroundTint="?colorBackgroundFloating"
+            app:boxStrokeColor="?attr/colorBackgroundFloating"           >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
+                app:boxStrokeColor="?attr/colorBackgroundFloating"
 
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +78,6 @@
             android:text="Log In"
             android:textSize="17sp"
             app:backgroundTint="@null"
-            android:textColor="@color/white"
             android:background="@drawable/buttom"
             android:textAllCaps="false"
             android:layout_marginTop="32dp" />
@@ -97,8 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don’t have an account? "
-                android:textSize="14sp"
-                android:textColor="@color/black" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/go_to_sign_up"

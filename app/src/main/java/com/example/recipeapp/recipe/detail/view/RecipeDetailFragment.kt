@@ -122,10 +122,6 @@ class RecipeDetailFragment : Fragment() {
         // Get the Activity Toolbar
         val actionBar = (activity as? AppCompatActivity)?.supportActionBar
         actionBar?.hide()
-        // Configure the ActionBar if it exists
-        actionBar?.apply {
-            title = "About"
-        }
 
     }
 }

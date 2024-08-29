@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="?attr/backgroundColor"
     app:navGraph="@navigation/nav_login_register"
     android:name="androidx.navigation.fragment.NavHostFragment"
     app:defaultNavHost="true"
@@ -21,7 +21,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_bar_height"
-            android:background="@color/light_gray"
+            android:background="?attr/backgroundColor"
             android:theme="@style/Widget.AppCompat.ActionBar"
             app:menu="@menu/option_menu" />
 
@@ -44,9 +44,13 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/buttom_navigation"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="@color/white"
-            android:layout_gravity="bottom"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="?attr/backgroundColor"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/button_navigation_menu" />
     </androidx.cardview.widget.CardView>
 

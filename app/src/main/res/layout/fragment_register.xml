@@ -31,12 +31,18 @@
             android:layout_marginVertical="20dp"
             android:hint="@string/enter_username"
 
+            app:hintTextColor="?attr/colorBackgroundFloating"
+            android:backgroundTint="?colorBackgroundFloating"
+            app:boxStrokeColor="?attr/colorBackgroundFloating"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_field_username"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="?attr/colorBackgroundFloating"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -46,12 +52,17 @@
             android:layout_marginVertical="20dp"
             android:hint="@string/email"
 
+            app:hintTextColor="?attr/colorBackgroundFloating"
+            android:backgroundTint="?colorBackgroundFloating"
+            app:boxStrokeColor="?attr/colorBackgroundFloating"
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_user_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                app:boxStrokeColor="?attr/colorBackgroundFloating"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -59,7 +70,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
-            android:backgroundTint="@color/white"
+
+            app:hintTextColor="?attr/colorBackgroundFloating"
+            android:backgroundTint="?colorBackgroundFloating"
+            app:boxStrokeColor="?attr/colorBackgroundFloating"
             app:endIconMode="password_toggle"
             android:hint="@string/enter_password">
 
@@ -67,6 +81,8 @@
                 android:id="@+id/password_Sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:boxStrokeColor="?attr/colorBackgroundFloating"
+
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -75,7 +91,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
-            android:backgroundTint="@color/white"
+
+            app:hintTextColor="?attr/colorBackgroundFloating"
+            android:backgroundTint="?colorBackgroundFloating"
+            app:boxStrokeColor="?attr/colorBackgroundFloating"
             app:endIconMode="password_toggle"
             android:hint="@string/enter_password">
 
@@ -83,6 +102,7 @@
                 android:id="@+id/confirm_password_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:boxStrokeColor="?attr/colorBackgroundFloating"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -94,7 +114,6 @@
             android:layout_height="wrap_content"
             android:text="@string/Register"
             android:textSize="17sp"
-            android:textColor="@color/white"
             android:textAllCaps="false"
             app:backgroundTint="@null"
             android:background="@drawable/buttom"
@@ -112,8 +131,7 @@
                 android:id="@+id/text_dont_have_acc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="do you have an account ? "                android:textSize="14sp"
-                android:textColor="@color/black" />
+                android:text="do you have an account ? " />
 
             <TextView
                 android:id="@+id/go_to_sign_up"

@@ -95,6 +95,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
+                        android:id="@+id/edit_profile_info"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -120,6 +121,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/change_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -147,6 +149,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/change_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
@@ -174,6 +177,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/region"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 

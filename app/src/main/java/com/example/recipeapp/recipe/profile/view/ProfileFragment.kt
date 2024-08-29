@@ -28,6 +28,7 @@ import com.example.recipeapp.auth.register.model.User
 import com.example.recipeapp.auth.register.model.UserDatabase
 import com.example.recipeapp.auth.register.model.UserRepository
 import com.example.recipeapp.databinding.FragmentProfileBinding
+import com.example.recipeapp.recipe.network.MealsRequest
 import com.example.recipeapp.recipe.profile.viewmodel.ProfileViewModel
 import com.example.recipeapp.recipe.profile.viewmodel.ProfileViewModelFactory
 import kotlinx.coroutines.launch
@@ -197,7 +198,20 @@ class ProfileFragment : Fragment() {
                 }.create().show()
         }
 
-        // change password by alert dialog that contains two edit text fields one for the old password and the other for the new password
+        binding.region.setOnClickListener {
+            lifecycleScope.launch {
+                val regions = MealsRequest.service.getAreaList().meals
+                val builder = AlertDialog.Builder(requireContext())
+                builder.setTitle("Choose Region")
+
+
+                val regionNames = regions?.map { it.strArea }?.toTypedArray()
+                builder.setItems(regionNames) { _, which ->
+                    settingsSharedPreferences.edit().putString("region", regionNames?.get(which)).apply()
+                }
+                builder.create().show()
+            }
+        }
     }
 
     private fun setUserNameAndEmail(user: User) {

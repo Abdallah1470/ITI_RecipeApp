@@ -448,10 +448,10 @@
                             android:id="@+id/app_version_text"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginEnd="14dp"
+                            android:layout_marginEnd="5dp"
                             android:fontFamily="serif-monospace"
-                            android:gravity="end|center_vertical"
-                            android:text="Version: 1.0.0"
+                            android:textAlignment="textEnd"
+                            android:text="1.0.0"
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold" />

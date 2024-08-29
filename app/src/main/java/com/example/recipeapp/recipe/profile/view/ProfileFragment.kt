@@ -22,13 +22,22 @@ import com.example.recipeapp.auth.login.view.IS_DARK_MODE
 import com.example.recipeapp.auth.login.view.IS_LOGIN
 import com.example.recipeapp.auth.login.view.settingsSharedPreferences
 import com.example.recipeapp.auth.login.view.userSharedPreferences
+import com.example.recipeapp.auth.register.model.UserDatabase
+import com.example.recipeapp.auth.register.model.UserRepository
 import com.example.recipeapp.databinding.FragmentProfileBinding
 import com.example.recipeapp.recipe.profile.viewmodel.ProfileViewModel
+import com.example.recipeapp.recipe.profile.viewmodel.ProfileViewModelFactory
 
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
-    private val viewModel: ProfileViewModel by viewModels()
+    private val viewModel: ProfileViewModel by viewModels{
+        ProfileViewModelFactory(
+            UserRepository(
+                UserDatabase.getInstance(requireContext().applicationContext).userDao()
+            )
+        )
+    }
 
 
     override fun onCreateView(
@@ -90,6 +99,11 @@ class ProfileFragment : Fragment() {
             Toast.makeText(
                 requireContext(), binding.appVersionText.text.toString(), Toast.LENGTH_SHORT
             ).show()
+        }
+        viewModel.getDataForUser()
+        viewModel.userData.observe(viewLifecycleOwner){ user->
+            binding.profileName.text = user.name
+            binding.profileEmail.text = user.email
         }
 
         binding.logOut.setOnClickListener {

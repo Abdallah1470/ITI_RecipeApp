@@ -86,15 +86,14 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         // Get the Activity Toolbar
         val actionBar = (activity as AppCompatActivity).supportActionBar
 
         actionBar?.apply {
             setDisplayHomeAsUpEnabled(false)
             setDisplayShowHomeEnabled(false)
-            title = "Favorite"
         }
         actionBar?.hide()
     }

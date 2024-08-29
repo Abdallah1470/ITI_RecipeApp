@@ -18,7 +18,10 @@ import com.example.recipeapp.recipe.model.Meal
 
 private var isChecked: Boolean = false
 
-class RecommendedAdapter(private val navController: NavController, private val viewModel: HomeViewModel,private val userID:Int
+class RecommendedAdapter(
+    private val navController: NavController,
+    private val viewModel: HomeViewModel,
+    private val userID: Int
 ) :
     RecyclerView.Adapter<RecommendedAdapter.MyHolder>() {
 
@@ -57,7 +60,6 @@ class RecommendedAdapter(private val navController: NavController, private val v
 
             }
             holder.itemView.setOnClickListener {
-                Log.d("Meal", "Meal id = ${meals[position].idMeal}")
                 val action =
                     HomeFragmentDirections.actionHomeFragmentToRecipeDetailFragment((meals[position].idMeal))
                 navController.navigate(action)

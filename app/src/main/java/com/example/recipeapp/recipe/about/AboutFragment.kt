@@ -25,9 +25,8 @@ class AboutFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onResume() {
-        super.onResume()
-
+    override fun onStart() {
+        super.onStart()
         // Get the Activity Toolbar
         val actionBar = (activity as? AppCompatActivity)?.supportActionBar
         actionBar?.show()

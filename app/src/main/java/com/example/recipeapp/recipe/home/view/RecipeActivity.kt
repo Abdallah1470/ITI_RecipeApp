@@ -31,12 +31,8 @@ class RecipeActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         bottomNav = findViewById(R.id.buttom_navigation)
 
-        bottomNav.background = null
-
         //toolbar
         setSupportActionBar(toolbar)
-        val name: String = resources.getString(R.string.app_name)
-        supportActionBar?.title = name
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
@@ -69,10 +65,6 @@ class RecipeActivity : AppCompatActivity() {
         }
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option_menu, menu)
         return true
@@ -81,7 +73,6 @@ class RecipeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.about -> {
-                Toast.makeText(this, "about ", Toast.LENGTH_SHORT).show()
                 findNavController(R.id.nav_host_fragment).navigate(R.id.aboutFragment)
                 return true
             }
@@ -94,13 +85,4 @@ class RecipeActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
-
-    override fun onBackPressed() {
-        val navController = findNavController(R.id.nav_host_fragment)
-        if (!navController.popBackStack()) {
-            super.onBackPressed()
-        }
-    }
-
 }

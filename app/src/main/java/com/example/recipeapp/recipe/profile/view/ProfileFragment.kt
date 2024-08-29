@@ -203,8 +203,6 @@ class ProfileFragment : Fragment() {
                 val regions = MealsRequest.service.getAreaList().meals
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setTitle("Choose Region")
-
-
                 val regionNames = regions?.map { it.strArea }?.toTypedArray()
                 builder.setItems(regionNames) { _, which ->
                     settingsSharedPreferences.edit().putString("region", regionNames?.get(which)).apply()

@@ -10,7 +10,8 @@ import com.example.recipeapp.recipe.network.MealsRequest
 import kotlinx.coroutines.launch
 
 class RecipeDetailViewModel(
-    private val favoriteRepository: FavoriteRepository ) : ViewModel() {
+    private val favoriteRepository: FavoriteRepository
+) : ViewModel() {
 
     private val _meal = MutableLiveData<Meal?>()
     val meal: LiveData<Meal?> = _meal

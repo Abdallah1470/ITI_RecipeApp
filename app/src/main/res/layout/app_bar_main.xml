@@ -37,7 +37,6 @@
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
         android:elevation="15dp"
-        android:background="#A60E0E"
         app:cardElevation="@dimen/cardview_default_radius"
         android:layout_height="wrap_content">
 
@@ -45,12 +44,11 @@
             android:id="@+id/buttom_navigation"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:background="?attr/background"
+            app:itemRippleColor="?attr/itemRippleColor"
+            app:itemIconTint="?attr/itemIconTint"
             android:layout_alignParentBottom="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="?attr/backgroundColor"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
+            style="@style/CustomBottomNavigationView"
             app:menu="@menu/button_navigation_menu" />
     </androidx.cardview.widget.CardView>
 

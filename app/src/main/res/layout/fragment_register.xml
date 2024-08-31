@@ -23,25 +23,27 @@
             android:layout_marginTop="50dp" />
 
 
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
-            android:hint="@string/enter_username"
-
+            android:hint="Name"
             app:hintTextColor="?attr/colorBackgroundFloating"
             android:backgroundTint="?colorBackgroundFloating"
-            app:boxStrokeColor="?attr/colorBackgroundFloating"
-
-            >
+            app:boxStrokeColor="?attr/boxStrokeColor"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_field_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxStrokeColor="?attr/colorBackgroundFloating"
+                android:drawableStart="@drawable/ic_action_person"
+                android:drawablePadding="15dp"
+                android:drawableTint="?attr/colorBackgroundFloating"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,14 +56,19 @@
 
             app:hintTextColor="?attr/colorBackgroundFloating"
             android:backgroundTint="?colorBackgroundFloating"
-            app:boxStrokeColor="?attr/colorBackgroundFloating"
-            >
+            app:boxStrokeColor="?attr/boxStrokeColor"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_user_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxStrokeColor="?attr/colorBackgroundFloating"
+                android:drawableTint="?attr/colorBackgroundFloating"
+                android:drawableStart="@drawable/ic_action_email"
+                android:drawablePadding="15dp"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -70,18 +77,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
-
             app:hintTextColor="?attr/colorBackgroundFloating"
             android:backgroundTint="?colorBackgroundFloating"
-            app:boxStrokeColor="?attr/colorBackgroundFloating"
+            app:boxStrokeColor="?attr/boxStrokeColor"
             app:endIconMode="password_toggle"
-            android:hint="@string/enter_password">
+            android:hint="@string/enter_password"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password_Sign_up"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxStrokeColor="?attr/colorBackgroundFloating"
+                android:drawableStart="@android:drawable/ic_secure"
+                android:drawablePadding="15dp"
+                android:drawableTint="?attr/colorBackgroundFloating"
 
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -91,21 +105,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="20dp"
-
             app:hintTextColor="?attr/colorBackgroundFloating"
             android:backgroundTint="?colorBackgroundFloating"
-            app:boxStrokeColor="?attr/colorBackgroundFloating"
+            app:boxStrokeColor="?attr/boxStrokeColor"
             app:endIconMode="password_toggle"
-            android:hint="@string/enter_password">
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+            android:hint="Confirm password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/confirm_password_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxStrokeColor="?attr/colorBackgroundFloating"
-                android:inputType="textPassword"/>
+                android:drawableStart="@android:drawable/ic_secure"
+                android:drawablePadding="15dp"
+                android:drawableTint="?attr/colorBackgroundFloating"
+                android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
 
         <Button
@@ -139,7 +157,8 @@
                 android:layout_height="wrap_content"
                 android:text="Sign Up"
                 android:textSize="15sp"
-                android:textColor="@android:color/holo_orange_light"                android:layout_marginStart="4dp" />
+                android:textColor="@android:color/holo_orange_light"
+                android:layout_marginStart="4dp" />
         </LinearLayout>
 
     </LinearLayout>

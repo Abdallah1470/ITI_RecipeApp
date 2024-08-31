@@ -37,17 +37,23 @@
             android:layout_height="wrap_content"
             android:hint="Email"
             android:layout_marginVertical="30dp"
-
             app:hintTextColor="?attr/colorBackgroundFloating"
             android:backgroundTint="?colorBackgroundFloating"
-            app:boxStrokeColor="?attr/colorBackgroundFloating"
+            app:boxStrokeColor="?attr/colorButtonNormal"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_field_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:boxStrokeColor="?attr/colorBackgroundFloating"
+                android:drawableStart="@drawable/ic_action_email"
+                android:drawablePadding="15dp"
+                android:drawableTint="?attr/colorBackgroundFloating"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,15 +65,20 @@
             app:endIconMode="password_toggle"
             app:hintTextColor="?attr/colorBackgroundFloating"
             android:backgroundTint="?colorBackgroundFloating"
-            app:boxStrokeColor="?attr/colorBackgroundFloating"           >
+            app:boxStrokeColor="?attr/colorButtonNormal"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                app:boxStrokeColor="?attr/colorBackgroundFloating"
-
+                android:drawableStart="@android:drawable/ic_secure"
+                android:drawableTint="?attr/colorBackgroundFloating"
+                android:drawablePadding="15dp"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

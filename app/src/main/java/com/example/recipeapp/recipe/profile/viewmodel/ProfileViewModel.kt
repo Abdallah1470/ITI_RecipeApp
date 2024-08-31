@@ -25,12 +25,6 @@ class ProfileViewModel(private val repository: UserRepository) : ViewModel() {
     }
 
 
-    fun setDarkMode(checked: Boolean) {
-        AppCompatDelegate.setDefaultNightMode(
-            if (checked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
-        )
-    }
-
     fun getDataForUser(){
         viewModelScope.launch {
             userData.postValue(repository.getUserById(getUser().toLong()))

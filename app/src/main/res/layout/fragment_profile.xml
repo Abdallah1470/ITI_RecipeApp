@@ -249,43 +249,6 @@
                             android:textSize="16sp" />
 
                     </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:padding="2dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_dark_mode" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="14dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:text="Dark Mode"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/dark_mode_switch"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="14dp"
-
-                            android:layout_gravity="center_vertical|end"
-                            style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
-                            />
-
-
-
-                    </LinearLayout>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

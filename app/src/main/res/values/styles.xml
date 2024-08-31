@@ -7,4 +7,14 @@
         <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
         <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
+
+    <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">?attr/colorOnSurface</item>
+        <item name="itemTextColor">?attr/colorSurface</item>
+        <item name="itemRippleColor">?attr/colorSurface</item>
+        <item name="backgroundColor">?attr/colorSurface</item>
+        <item name="android:backgroundTint">?attr/colorSurface</item>
+    </style>
+
+
 </resources>

@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@drawable/ic_action_person"
                 android:drawablePadding="15dp"
+                android:textColor="?attr/colorBackgroundFloating"
                 android:drawableTint="?attr/colorBackgroundFloating"
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -69,6 +70,8 @@
                 android:drawableTint="?attr/colorBackgroundFloating"
                 android:drawableStart="@drawable/ic_action_email"
                 android:drawablePadding="15dp"
+                android:textColor="?attr/colorBackgroundFloating"
+
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,7 +99,7 @@
                 android:drawableStart="@android:drawable/ic_secure"
                 android:drawablePadding="15dp"
                 android:drawableTint="?attr/colorBackgroundFloating"
-
+                android:textColor="?attr/colorBackgroundFloating"
                 android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:drawableStart="@android:drawable/ic_secure"
                 android:drawablePadding="15dp"
+                android:textColor="?attr/colorBackgroundFloating"
                 android:drawableTint="?attr/colorBackgroundFloating"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>

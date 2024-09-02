@@ -29,7 +29,7 @@
                 android:layout_width="150dp"
                 android:layout_height="160dp"
                 android:clipToOutline="true"
-                android:foreground="@drawable/image_grdient_background"
+                android:foreground="@drawable/imag_forgraud_category"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,24 +47,25 @@
                 app:layout_constraintStart_toStartOf="@+id/mealImage"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/favorite_checkbox_background" />
+
+            <TextView
+                android:id="@+id/mealName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="4dp"
+                android:text="mohamed"
+                android:layout_marginBottom="8dp"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/mealName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:gravity="center_horizontal"
-        android:padding="4dp"
-        android:text="Baked salmon with fennel  tomatoes"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
 </LinearLayout>

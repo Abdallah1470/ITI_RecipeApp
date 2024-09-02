@@ -12,9 +12,10 @@
         <item name="boxStrokeColor">@color/black</item>
         <item name="itemIconTint">@color/black</item>
         <item name="itemTextColor">@color/bottomNavItemColor</item>
-        <item name="itemRippleColor">@color/black</item>
+        <item name="itemRippleColor">@color/bottomNavItemColorSelected</item>
         <item name="background">@color/colorSurface</item>
 
+        <item name="constraints">@color/bottomNavItemColorSelected</item>
         <item name="android:textColorPrimary">@color/white</item>
         <item name="android:textColorSecondary">@color/white</item>
 

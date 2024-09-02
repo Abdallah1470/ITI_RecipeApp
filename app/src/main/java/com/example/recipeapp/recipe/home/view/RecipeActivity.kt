@@ -85,4 +85,25 @@ class RecipeActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private var backPressedTime: Long = 0
+
+    override fun onBackPressed() {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+        val currentFragment = navHostFragment?.childFragmentManager?.fragments?.get(0)
+
+        // If we are on the HomeFragment, handle the double back press to exit
+        if (currentFragment is HomeFragment) {
+            if (backPressedTime + 2000 > System.currentTimeMillis()) {
+                super.onBackPressed() // This will finish the activity
+            } else {
+                Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+            }
+            backPressedTime = System.currentTimeMillis()
+        } else {
+            // Otherwise, pop the back stack to navigate back to the previous fragment
+            super.onBackPressed()
+        }
+    }
+
 }

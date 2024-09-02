@@ -21,7 +21,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="@dimen/app_bar_height"
-            android:background="?attr/backgroundColor"
+            android:background="?attr/constraints"
             android:theme="@style/Widget.AppCompat.ActionBar"
             app:menu="@menu/option_menu" />
 
@@ -36,14 +36,14 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_gravity="bottom"
-        android:elevation="15dp"
-        app:cardElevation="@dimen/cardview_default_radius"
+        app:cardElevation="50dp"
         android:layout_height="wrap_content">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/buttom_navigation"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:elevation="50dp"
             android:background="?attr/background"
             app:itemRippleColor="?attr/itemRippleColor"
             app:itemIconTint="?attr/itemIconTint"

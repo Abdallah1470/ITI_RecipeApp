@@ -136,13 +136,13 @@ class ProfileFragment : Fragment() {
             // Customize the "Yes" button (positive button)
             alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)?.let { button ->
                 // or set background if needed
-                 button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green))
+                button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green))
             }
 
             // Customize the "No" button (negative button)
             alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)?.let { button ->
                 // or set background if needed
-                 button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green))
+                button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green))
             }
         }
 

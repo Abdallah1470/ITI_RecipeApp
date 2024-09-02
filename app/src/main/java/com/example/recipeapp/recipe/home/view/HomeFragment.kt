@@ -149,11 +149,6 @@ class HomeFragment : Fragment() {
         super.onStart()
         // Get the Activity Toolbar
         val actionBar = (activity as AppCompatActivity).supportActionBar
-
-        actionBar?.apply {
-            setDisplayHomeAsUpEnabled(false)
-            setDisplayShowHomeEnabled(false)
-        }
         actionBar?.hide()
     }
 

@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,6 +35,8 @@ class HomeFragment : Fragment() {
     private lateinit var recommendedRecyclerView: RecyclerView
     private lateinit var shimmerRecommended: ShimmerFrameLayout
     private lateinit var shimmerCategory: ShimmerFrameLayout
+    private lateinit var shimmerMeal: ShimmerFrameLayout
+    private lateinit var cardView: CardView
     private lateinit var iconUser: ImageView
     private lateinit var userName: TextView
     private lateinit var recipeName: TextView
@@ -64,6 +67,8 @@ class HomeFragment : Fragment() {
         recommendedRecyclerView = view.findViewById(R.id.recyclerViewRecommended)
         shimmerCategory = view.findViewById(R.id.shimmer_view_container_category)
         shimmerRecommended = view.findViewById(R.id.shimmer_view_container_recommended)
+        shimmerMeal = view.findViewById(R.id.shimmer_view_meal)
+        cardView = view.findViewById(R.id.cardView_meal)
         iconUser = view.findViewById(R.id.iconUserImage)
         userName = view.findViewById(R.id.nameUserTextView)
         recipeRandom = view.findViewById(R.id.recipe_image)
@@ -112,9 +117,14 @@ class HomeFragment : Fragment() {
         // put meal best in home page
         viewModel.getRecipe()
         viewModel.recipeMeal.observe(viewLifecycleOwner) { meal ->
+
             meal.strMealThumb?.let { showImage(it, recipeRandom) }
 
             recipeName.text = meal.strMeal
+
+            shimmerMeal.stopShimmer()
+            shimmerMeal.visibility = View.GONE
+            cardView.visibility = View.VISIBLE
 
             recipeRandom.setOnClickListener {
                 val action =

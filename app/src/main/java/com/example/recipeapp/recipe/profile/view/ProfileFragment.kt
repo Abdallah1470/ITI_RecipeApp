@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -22,11 +23,10 @@ import com.example.recipeapp.auth.login.view.AuthActivity
 import com.example.recipeapp.auth.login.view.IS_DARK_MODE
 import com.example.recipeapp.auth.login.view.IS_LOGIN
 import com.example.recipeapp.auth.login.view.USER_ID
-import com.example.recipeapp.auth.login.view.settingsSharedPreferences
 import com.example.recipeapp.auth.login.view.userSharedPreferences
-import com.example.recipeapp.auth.register.model.User
 import com.example.recipeapp.auth.register.model.UserDatabase
 import com.example.recipeapp.auth.register.model.UserRepository
+import com.example.recipeapp.auth.register.model.User
 import com.example.recipeapp.databinding.FragmentProfileBinding
 import com.example.recipeapp.recipe.profile.viewmodel.ProfileViewModel
 import com.example.recipeapp.recipe.profile.viewmodel.ProfileViewModelFactory
@@ -37,8 +37,13 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var repository: UserRepository
     private lateinit var user: User
-    private val viewModel: ProfileViewModel by viewModels {
-        ProfileViewModelFactory(repository)
+
+    private val viewModel: ProfileViewModel by viewModels{
+        ProfileViewModelFactory(
+            UserRepository(
+                UserDatabase.getInstance(requireContext().applicationContext).userDao()
+            )
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,13 +93,6 @@ class ProfileFragment : Fragment() {
             findNavController().navigate(R.id.action_profileFragment_to_aboutFragment)
         }
 
-        binding.darkModeSwitch.isChecked = settingsSharedPreferences.getBoolean(IS_DARK_MODE, false)
-
-        binding.darkModeSwitch.setOnCheckedChangeListener { _, isChecked ->
-            settingsSharedPreferences.edit().putBoolean(IS_DARK_MODE, isChecked).apply()
-            viewModel.setDarkMode(isChecked)
-        }
-
         binding.termsOfService.setOnClickListener {
             findNavController().navigate(R.id.action_profileFragment_to_termsFragment)
         }
@@ -112,17 +110,40 @@ class ProfileFragment : Fragment() {
                 requireContext(), binding.appVersionText.text.toString(), Toast.LENGTH_SHORT
             ).show()
         }
+        viewModel.getDataForUser()
+        viewModel.userData.observe(viewLifecycleOwner){ user->
+            binding.profileName.text = user.name
+            binding.profileEmail.text = user.email
+        }
 
         binding.logOut.setOnClickListener {
-            AlertDialog.Builder(requireContext()).setTitle("Confirm Logout")
+            val alertDialog = AlertDialog.Builder(requireContext())
+                .setTitle("Confirm Logout")
                 .setMessage("Are you sure you want to log out?")
                 .setPositiveButton("Yes") { dialog, _ ->
                     userSharedPreferences.edit().putBoolean(IS_LOGIN, false).apply()
                     startActivity(Intent(requireContext(), AuthActivity::class.java))
                     dialog.dismiss()
-                }.setNegativeButton("No") { dialog, _ ->
+                }
+                .setNegativeButton("No") { dialog, _ ->
                     dialog.dismiss()
-                }.create().show()
+                }
+                .create()
+
+            // Show the dialog first
+            alertDialog.show()
+
+            // Customize the "Yes" button (positive button)
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE)?.let { button ->
+                // or set background if needed
+                button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green))
+            }
+
+            // Customize the "No" button (negative button)
+            alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE)?.let { button ->
+                // or set background if needed
+                button.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.green))
+            }
         }
 
         binding.changeProfileImage.setOnClickListener {
@@ -184,6 +205,7 @@ class ProfileFragment : Fragment() {
                     AlertDialog.Builder(requireContext()).setTitle("Confirm Account Deletion")
                         .setMessage("Your account will be deleted permanently. Are you sure you want to proceed?")
                         .setPositiveButton("Yes") { dialog, _ ->
+
                             viewModel.deleteUser(userSharedPreferences.getLong(USER_ID, -1))
                             userSharedPreferences.edit().putBoolean(IS_LOGIN, false).apply()
                             startActivity(Intent(requireContext(), AuthActivity::class.java))

@@ -14,6 +14,12 @@
         android:layout_gravity="center_vertical"
         android:padding="16dp">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/ic_recipe_launcher"
+            android:layout_gravity="center_horizontal" />
+
         <TextView
             android:id="@+id/text_login"
             android:layout_width="wrap_content"
@@ -36,14 +42,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:backgroundTint="@color/white"
             android:layout_marginVertical="30dp"
+            app:hintTextColor="?attr/colorBackgroundFloating"
+            android:backgroundTint="?colorBackgroundFloating"
+            app:boxStrokeColor="?attr/colorButtonNormal"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp"
+
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_field_email"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorBackgroundFloating"
+                android:drawableStart="@drawable/ic_action_email"
+                android:drawablePadding="15dp"
+                android:drawableTint="?attr/colorBackgroundFloating"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -52,15 +70,23 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             app:endIconMode="password_toggle"
-            android:backgroundTint="@color/white"
-            >
+            app:hintTextColor="?attr/colorBackgroundFloating"
+            android:backgroundTint="?colorBackgroundFloating"
+            app:boxStrokeColor="?attr/colorButtonNormal"
+            app:boxCornerRadiusBottomEnd="15dp"
+            app:boxCornerRadiusBottomStart="15dp"
+            app:boxCornerRadiusTopEnd="15dp"
+            app:boxCornerRadiusTopStart="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-
+                android:textColor="?attr/colorBackgroundFloating"
+                android:drawableStart="@android:drawable/ic_secure"
+                android:drawableTint="?attr/colorBackgroundFloating"
+                android:drawablePadding="15dp"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,7 +97,6 @@
             android:text="Log In"
             android:textSize="17sp"
             app:backgroundTint="@null"
-            android:textColor="@color/white"
             android:background="@drawable/buttom"
             android:textAllCaps="false"
             android:layout_marginTop="32dp" />
@@ -97,8 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Don’t have an account? "
-                android:textSize="14sp"
-                android:textColor="@color/black" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/go_to_sign_up"

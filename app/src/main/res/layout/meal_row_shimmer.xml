@@ -12,44 +12,14 @@
     android:outlineSpotShadowColor="@color/black"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_margin="4dp">
-
-
-        <ImageView
-            android:id="@+id/mealImage"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_margin="12dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="4dp"
-            android:background="#C2C2C2"
-            android:clipToOutline="true"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/mealName"
-            android:layout_width="150dp"
-            android:layout_height="25dp"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="15dp"
-            android:padding="10dp"
-            android:gravity="center_horizontal"
-            android:textSize="16sp"
-            android:background="#c2c2c2"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/mealImage"
-            app:layout_constraintHorizontal_bias="0.489"
-            app:layout_constraintStart_toStartOf="@+id/mealImage"
-            app:layout_constraintTop_toBottomOf="@+id/mealImage" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <ImageView
+        android:id="@+id/mealImage"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:background="#C2C2C2"
+        android:clipToOutline="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.cardview.widget.CardView>

@@ -6,7 +6,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="?attr/backgroundColor"
         tools:context=".recipe.profile.view.ProfileFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -115,7 +115,6 @@
                             android:gravity="center_vertical"
 
                             android:text="Edit personal information"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -143,7 +142,6 @@
                             android:gravity="center_vertical"
 
                             android:text="Change email"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -171,7 +169,6 @@
                             android:gravity="center_vertical"
 
                             android:text="Change password"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -198,7 +195,6 @@
                             android:gravity="center_vertical"
 
                             android:text="Region"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -250,46 +246,7 @@
                             android:gravity="center_vertical"
 
                             android:text="Favorites Menu"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:padding="2dp"
-                            android:layout_gravity="center_vertical"
-                            android:src="@drawable/ic_dark_mode" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_marginStart="14dp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:text="Dark Mode"
-                            android:textColor="@color/black"
-                            android:textSize="16sp" />
-
-                        <com.google.android.material.switchmaterial.SwitchMaterial
-                            android:id="@+id/dark_mode_switch"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="14dp"
-                            android:layout_gravity="center_vertical|end"
-                            style="@style/Widget.Material3.CompoundButton.MaterialSwitch"
-
-                            />
-
-
 
                     </LinearLayout>
                 </LinearLayout>
@@ -340,7 +297,6 @@
                             android:gravity="center_vertical"
 
                             android:text="About"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -367,7 +323,6 @@
                             android:gravity="center_vertical"
 
                             android:text="Contact Us"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -394,7 +349,6 @@
                             android:gravity="center_vertical"
 
                             android:text="Privacy Policy"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -420,7 +374,6 @@
                             android:gravity="center_vertical"
 
                             android:text="Terms of Service"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
                     </LinearLayout>
 
@@ -445,18 +398,16 @@
                             android:gravity="center_vertical"
 
                             android:text="App Version"
-                            android:textColor="@color/black"
                             android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/app_version_text"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginEnd="14dp"
+                            android:layout_marginEnd="5dp"
                             android:fontFamily="serif-monospace"
-                            android:gravity="end|center_vertical"
-                            android:text="Version: 1.0.0"
-                            android:textColor="@color/black"
+                            android:textAlignment="textEnd"
+                            android:text="1.0.0"
                             android:textSize="16sp"
                             android:textStyle="bold" />
                     </LinearLayout>

@@ -15,6 +15,8 @@ class FavoriteViewModel(private val repository: FavoriteRepository) : ViewModel(
     private val _favoriteResultMutableLiveData = MutableLiveData<List<Meal>?>()
     val favoriteLiveData: MutableLiveData<List<Meal>?> get() = _favoriteResultMutableLiveData
 
+
+
     fun getMealsFavorite(id: Int) {
         viewModelScope.launch {
             _favoriteResultMutableLiveData.postValue(repository.getAllFavorite(id)?.favoriteMales)

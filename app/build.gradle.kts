@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+import java.util.regex.Pattern.compile
 
 plugins {
     alias(libs.plugins.android.application)
@@ -95,5 +96,7 @@ dependencies {
 
     // shimmer animation
     implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation (libs.horizontalcalendar)
+    implementation ("com.github.akshittyagi205:HorizontalCalendarView:v1.0.0")
 
 }

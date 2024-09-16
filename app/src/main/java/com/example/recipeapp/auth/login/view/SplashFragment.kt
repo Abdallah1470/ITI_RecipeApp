@@ -20,23 +20,17 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 const val PREF_NAME = "myPreferences"
-const val SETTINGS_PREF = "settings"
 const val USER_ID = "id"
 const val IS_LOGIN = "logged"
 const val IS_DARK_MODE = "logged"
 lateinit var userSharedPreferences: SharedPreferences
-lateinit var settingsSharedPreferences: SharedPreferences
 
 class SplashFragment : Fragment() {
     private lateinit var binding: FragmentSplashBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        settingsSharedPreferences = requireContext().getSharedPreferences(SETTINGS_PREF, Context.MODE_PRIVATE)
-        AppCompatDelegate.setDefaultNightMode(
-            if (settingsSharedPreferences.getBoolean(IS_DARK_MODE, false)) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
-        )
+    ): View {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_splash, container, false)
         userSharedPreferences = (context?.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
